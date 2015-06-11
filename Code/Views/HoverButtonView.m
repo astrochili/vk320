@@ -29,8 +29,14 @@
     }
 }
 
-- (void)mouseExited:(NSEvent *)theEvent {
+- (void)mouseExited:(NSEvent *)theEvent
+{
     [super mouseExited:theEvent];
+    [self clearMouseHoverInfo];
+}
+
+- (void)clearMouseHoverInfo
+{
     [self setMouseHover:NO];
     if ([self isEnabled]) {
         self.image = self.imageTmp;

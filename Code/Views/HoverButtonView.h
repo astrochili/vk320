@@ -17,4 +17,6 @@
 @property (strong) NSCursor *cursor;
 @property BOOL needHandCursor;
 
+- (void)clearMouseHoverInfo;
+
 @end

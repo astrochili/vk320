@@ -302,7 +302,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
 - (IBAction)clickMyMusic:(id)sender {
     
     if ([sender isKindOfClass:[HoverButtonView class]]) {
-        [sender mouseExited:nil];
+        [sender clearMouseHoverInfo];
     }
     [self.altSearchView setHidden:YES];
     [self.searchField setEnabled:YES];
@@ -314,7 +314,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
 - (IBAction)clickRecommendations:(id)sender {
 
     if ([sender isKindOfClass:[HoverButtonView class]]) {
-        [sender mouseExited:nil];
+        [sender clearMouseHoverInfo];
     }
     [self.altSearchView setHidden:YES];
     [self.searchField setEnabled:YES];
@@ -326,7 +326,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
 - (IBAction)clickLinkInfo:(id)sender {
 
     if ([sender isKindOfClass:[HoverButtonView class]]) {
-        [sender mouseExited:nil];
+        [sender clearMouseHoverInfo];
     }
     [self.altSearchView setHidden:YES];
     [self.searchField setEnabled:YES];
@@ -340,7 +340,6 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     
         [self makeFirstResponder:self.searchField];
         [[self.searchField cell] setPlaceholderString:@"Просто вставьте ссылку сюда"];
-//        [self.searchField setPlaceholderString:@"Просто вставьте ссылку сюда"];
         
     }];
     

@@ -72,18 +72,26 @@
         
     } else if (self.prevRow != -1) {
         
-        [self mouseExited:nil];
+        [self clearMouseHoverInfo];
         
     }
     
 }
 
-- (void)mouseExited:(NSEvent *)theEvent {
-    
-	self.hoverRow = -1;
-    [self reloadActionButtonsOnHoverRow:self.prevRow];
-	self.prevRow = -1;
+
+- (void)mouseExited:(NSEvent *)theEvent
+{
+    [self clearMouseHoverInfo];
 }
+
+
+- (void)clearMouseHoverInfo
+{
+    self.hoverRow = -1;
+    [self reloadActionButtonsOnHoverRow:self.prevRow];
+    self.prevRow = -1;
+}
+
 
 - (void)reloadActionButtonsOnHoverRow:(NSInteger)row {
     
