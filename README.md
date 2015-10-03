@@ -1,6 +1,6 @@
 #VK320
 Website - http://vk320.ru<br>
-App for search, listen and dowload music from VK social network.
+App for search, listen and download music from VK social network.
 <br><br>
 For build you need set <strong>APP_ID</strong>, <strong>DOMAIN</strong> and <strong>LOGOUT_URL</strong> arguments in "Main/vkapi.plist.example". And remove .example extention, indeed.
 <br><br>
