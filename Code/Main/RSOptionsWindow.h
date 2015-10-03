@@ -23,6 +23,7 @@
 @property (weak) IBOutlet ITSwitch *autoplayCheckbox;
 @property (weak) IBOutlet ITSwitch *correctorCheckbox;
 @property (weak) IBOutlet ITSwitch *checkUpdatesCheckbox;
+@property (weak) IBOutlet ITSwitch *getMyMusicOnLogin;
 @property (weak) IBOutlet NSSlider *filterKbpsSlider;
 @property (weak) IBOutlet NSTextField *filterKbpsField;
 @property (weak) IBOutlet NSTextField *currentUser;

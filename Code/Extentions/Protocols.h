@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "RSAlertView.h"
 
+#define kDownloadPathSecureBookmark @"Download Path Secure Bookmark"
 #define kDownloadPath @"Download Path"
 #define kRequestLimit @"Request Limit"
 #define kMyMusicLimit @"My Music Limit"
@@ -18,6 +19,7 @@
 #define kSaveDownloadHistory @"Save Downloads History"
 #define kDoubleClickDownload @"Download on Double Click / or Play"
 #define kAutoPlayNextTrack @"Auto Play Next Track"
+#define kGetMyMusicOnLogin @"Get My Music OnLogin"
 #define kSortDescriptorColumn @"Sort Descriptor Column"
 #define kSortDescriptorAscending @"Sort Descriptor Ascending"
 #define kDownloadsHistory @"Downloads History"

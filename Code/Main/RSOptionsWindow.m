@@ -23,6 +23,7 @@
     [self.fullPathCheckbox setTintColor:[NSColor pxColorWithHexValue:COLOR_BUTTON_BLUE]];
     [self.doubleClickCheckbox setTintColor:[NSColor pxColorWithHexValue:COLOR_BUTTON_BLUE]];
     [self.checkUpdatesCheckbox setTintColor:[NSColor pxColorWithHexValue:COLOR_BUTTON_BLUE]];
+    [self.getMyMusicOnLogin setTintColor:[NSColor pxColorWithHexValue:COLOR_BUTTON_BLUE]];
 
     [[self.requestLimitField cell] setPlaceholderString:REQUEST_DEFAULT_LIMIT];
     [[self.myMusicLimitField cell] setPlaceholderString:MYMUSIC_DEFAULT_LIMIT];
@@ -43,6 +44,15 @@
     [panel beginSheetModalForWindow:self completionHandler:^(NSInteger result){
         if (result == NSFileHandlingPanelOKButton) {
             [self.downloadsPathField setStringValue:[[panel URL] path]];
+            
+            NSError *error = nil;
+            NSData *bookmarkData = nil;
+            bookmarkData = [[panel URL]
+                            bookmarkDataWithOptions:NSURLBookmarkCreationWithSecurityScope
+                            includingResourceValuesForKeys:nil
+                            relativeToURL:nil
+                            error:&error];
+            [[NSUserDefaults standardUserDefaults] setObject:bookmarkData forKey:kDownloadPathSecureBookmark];
         }
     }];
     

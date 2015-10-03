@@ -11,12 +11,11 @@
 #import "Protocols.h"
 #import "NSString+Bonus.h"
 #import "AFNetworking.h"
-//#import "AFDownloadRequestOperation.h"
 #import "NSColor+PXExtentions.h"
 
 @interface RSDownloadItem : NSObject
 
-@property (strong, nonatomic) NSString *path;
+@property (strong, nonatomic) NSURL *path;
 @property (nonatomic) NSInteger duration;
 @property (nonatomic) NSInteger sizeDownloaded;
 @property (nonatomic) NSInteger size;

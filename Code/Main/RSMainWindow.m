@@ -8,6 +8,7 @@
 
 #import "RSMainWindow.h"
 
+
 @implementation RSMainWindow
 
 static NSString *PlayerContext = @"PlayerContext";
@@ -34,6 +35,20 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
 #pragma mark NSWindow
 
 - (void)awakeFromNib {
+    
+    MASShortcut *shortcutF7 = [MASShortcut shortcutWithKeyCode:kVK_F7 modifierFlags:0];
+    MASShortcut *shortcutF8 = [MASShortcut shortcutWithKeyCode:kVK_F8 modifierFlags:0];
+    MASShortcut *shortcutF9 = [MASShortcut shortcutWithKeyCode:kVK_F9 modifierFlags:0];
+    [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcutF7 withAction:^{
+        [self clickPlayerPrev:nil];
+    }];
+    [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcutF8 withAction:^{
+        [self clickPlayerPlayPause:nil];
+    }];
+    [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcutF9 withAction:^{
+        [self clickPlayerNext:nil];
+    }];
+
     
     if (!self.access_token) {
         //once initilization
@@ -129,27 +144,27 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     [operation setCompletionBlockWithSuccess: ^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSString *lastVersion = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSCharacterSet *versionCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789.,ab"];
+        NSCharacterSet *lastVersionSet = [NSCharacterSet characterSetWithCharactersInString:lastVersion];
+        BOOL lastVersionIsCorrect = (lastVersion.length <= 16 && [versionCharacterSet isSupersetOfSet: lastVersionSet]);
+        
         NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
         
-        if (![lastVersion isEqualToString:currentVersion]) {
-            
-            NSAlert *alert = [[NSAlert alloc] init];
-            [alert setMessageText:@"Обновление VK320!"];
-            [alert setInformativeText:[NSString stringWithFormat:@"Новая версия %@ доступна для загрузки.\nОтключить уведомления можно в настройках.", lastVersion]];
-            [alert addButtonWithTitle:@"Подробнее"];
-            [alert addButtonWithTitle:@"Позже"];
-            [alert beginSheetModalForWindow:self completionHandler:^(NSModalResponse returnCode) {
-                
-                if (returnCode == 1000) {
-                    [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString:UPDATES_URL]];
-                }
-                
-            }];
-            
-        } else if ([sender isKindOfClass:[NSMenuItem class]]) {
-            
-            [self.alertView showAlert:ALERT_CHECK_UPDATES_ACTUAL withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
-            
+        if (lastVersionIsCorrect)
+        {
+            if ([lastVersion compare:currentVersion options:NSNumericSearch] == NSOrderedDescending) {
+                NSAlert *alert = [[NSAlert alloc] init];
+                [alert setMessageText:@"Обновление VK320!"];
+                [alert setInformativeText:[NSString stringWithFormat:@"Новая версия %@ доступна для загрузки.\nОтключить уведомления можно в настройках.", lastVersion]];
+                [alert addButtonWithTitle:@"Подробнее"];
+                [alert addButtonWithTitle:@"Позже"];
+                [alert beginSheetModalForWindow:self completionHandler:^(NSModalResponse returnCode) {
+                    if (returnCode == 1000) [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString:UPDATES_URL]];
+                }];
+            } else if ([sender isKindOfClass:[NSMenuItem class]]) {
+                NSString *alertMessage = [NSString stringWithFormat:@"Текущая версия %@. Актуальный релиз %@.", currentVersion, lastVersion];
+                [self.alertView showAlert:alertMessage withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
+            }
         }
         
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -997,6 +1012,9 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
 
 - (IBAction)clickPlayerPlayPause:(id)sender {
     
+    if (![self.playerNextButton isEnabled])
+        return;
+    
     if (self.player.rate == 0.0f) {
         [self.player play];
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:[self currentAudioRow]];
@@ -1010,14 +1028,17 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
 
 - (IBAction)clickPlayerPrev:(id)sender {
     
-    [self playPrevTrack];
+    if (![self.playerPrevButton isEnabled])
+        return;
     
+    [self playPrevTrack];
 }
 
 - (IBAction)clickPlayerNext:(id)sender {
+    if (![self.playerNextButton isEnabled])
+        return;
     
     [self playNextTrack];
-    
 }
 
 - (void)sliderChanged {
@@ -1079,22 +1100,30 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
                                         @"v": VK_API_VERSION,
                                         @"access_token": self.access_token};
         
+        RSAudioItem *audioitemForAdding = self.currentAudioItem;
         [self.networkManager POST:method_audioAdd parameters:addParameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
-            if ([self checkResponseForError:responseObject]) {
+            if (![self checkResponseForError:responseObject]) {
                 
-                [self.currentAudioItem setAddedToVK:YES];
-                [self updatePlayerUI];
                 [self.alertView showAlert:ALERT_ADDTOVK_SUCCESS withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
-
+                
+            } else {
+                
+                [audioitemForAdding setAddedToVK:NO];
+                [self updatePlayerUI];
+                [self.alertView showAlert:ALERT_ADDTOVK_FAILURE withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
             }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
-            NSLog(@"# Error description: %@", error);
+            [audioitemForAdding setAddedToVK:NO];
+            [self updatePlayerUI];
             [self.alertView showAlert:ALERT_ADDTOVK_FAILURE withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
             
         }];
+        
+        [self.currentAudioItem setAddedToVK:YES];
+        [self updatePlayerUI];
         
     } else {
         
@@ -1326,6 +1355,8 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
             [self.alertView showAlert:ALERT_CONNECTION_ON withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
             [self trackVisitor];
             [self updateUsernameAndAvatar];
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:kGetMyMusicOnLogin])
+                [self startSearchWithPhrase:SEARCH_CODE_MYMUSIC];
             
         } else  {
             
@@ -1981,13 +2012,9 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     RSActionsCell *clickedActionsView = [self.resultsTableView viewAtColumn:[self.resultsTableView columnWithIdentifier:@"Actions"] row:rowNumber makeIfNecessary:YES];
     
     if ([[NSUserDefaults standardUserDefaults] integerForKey:kDoubleClickDownload] == 0 && [[self.funcKeysPressedNow objectForKey:@"alt"] boolValue] != YES) {
-        
         [self playFromActionsCell:clickedActionsView];
-        
     } else {
-        
         [self addDownloadFromAudioItem:clickedActionsView.audioItem];
-        
     }
     
 }
@@ -2001,8 +2028,13 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     
     if (downloadItem.status == RSDownloadCompleted) {
         
-        NSURL *fileURL = [NSURL fileURLWithPath: downloadItem.path];
-        [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[fileURL]];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[downloadItem.path path]]) {
+            [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[downloadItem.path]];
+        } else {
+            [self.alertView showAlert:@"Файл не найден" withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_YELLOW] autoHide:YES];
+            NSURL *folderURL = [downloadItem.path URLByDeletingLastPathComponent];
+            [[NSWorkspace sharedWorkspace] openURL:folderURL];
+        }
     }
     
 }
@@ -2151,7 +2183,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
                 if ([[NSUserDefaults standardUserDefaults] integerForKey:kUseFullPaths] == 0) {
                     [cellView.textField setStringValue:[downloadItem.path lastPathComponent]];
                 } else {
-                    [cellView.textField setStringValue:downloadItem.path];
+                    [cellView.textField setStringValue:[downloadItem.path path]];
                 }
             }
             if ([identifier isEqualToString:@"Duration"]) {

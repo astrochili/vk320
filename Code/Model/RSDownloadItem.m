@@ -14,14 +14,23 @@
     
     RSDownloadItem *downloadItem = [[RSDownloadItem alloc] init];
     
-    NSString  *downloadsDirectory = [[NSUserDefaults standardUserDefaults] objectForKey:kDownloadPath];
+    NSData *bookmarkData = [[NSUserDefaults standardUserDefaults] objectForKey:kDownloadPathSecureBookmark];
+    NSURL *downloadsDirectory = [NSURL URLByResolvingBookmarkData:bookmarkData
+                                                               options:NSURLBookmarkResolutionWithSecurityScope
+                                                         relativeToURL:nil
+                                                   bookmarkDataIsStale:nil
+                                                                 error:nil];
+    
+    if (!downloadsDirectory)
+        downloadsDirectory = [[NSFileManager defaultManager] URLForDirectory:NSDownloadsDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
     
     NSString *filename = [NSString stringWithFormat:@"%@ - %@", [audioItem.artist clearBadPathSymbols], [audioItem.title clearBadPathSymbols]];
     if ([filename length] > 251) {
         filename = [filename substringWithRange:NSMakeRange(0, 251)];
     }
 
-    downloadItem.path = [NSString stringWithFormat:@"%@/%@.mp3", downloadsDirectory, filename];
+    NSURL *fileURL = [downloadsDirectory URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp3", filename]];
+    downloadItem.path = fileURL;
     downloadItem.duration = audioItem.duration;
     downloadItem.kbps = audioItem.kbps;
     downloadItem.size = audioItem.size;
@@ -55,6 +64,7 @@
             blocksafeSelf.status = RSDownloadCompleted;
             blocksafeSelf.operation = nil;
             [blocksafeSelf.delegate updateDownloadItem:blocksafeSelf];
+            [blocksafeSelf.path stopAccessingSecurityScopedResource];
             [blocksafeSelf.delegate downloadCompleted];
 
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -81,18 +91,26 @@
             
         }];
         
-        [operation setOutputStream:[NSOutputStream outputStreamToFileAtPath:self.path append:NO]];
+        NSData *bookmarkData = [[NSUserDefaults standardUserDefaults] objectForKey:kDownloadPathSecureBookmark];
+        NSURL *downloadsDirectory = [NSURL URLByResolvingBookmarkData:bookmarkData
+                                                              options:NSURLBookmarkResolutionWithSecurityScope
+                                                        relativeToURL:nil
+                                                  bookmarkDataIsStale:nil
+                                                                error:nil];
+        
+        [downloadsDirectory startAccessingSecurityScopedResource];
+        [AFHTTPRequestOperationManager manager].responseSerializer.acceptableContentTypes = [[AFHTTPRequestOperationManager manager].responseSerializer.acceptableContentTypes setByAddingObject:@"audio/mpeg"];
+//        operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"audio/mpeg"];
+        [operation setOutputStream:[NSOutputStream outputStreamWithURL:self.path append:NO]];
         [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
             __strong typeof(weakSelf)blocksafeSelf = weakSelf;
             if (blocksafeSelf.status == RSDownloadAddedJustNow) {
                 blocksafeSelf.status = RSDownloadInProgress;
                 [self.delegate updateDownloadsButtons];
             }
-                blocksafeSelf.sizeDownloaded = totalBytesRead;
-                [blocksafeSelf.delegate updateDownloadItem:blocksafeSelf];
-            
+            blocksafeSelf.sizeDownloaded = totalBytesRead;
+            [blocksafeSelf.delegate updateDownloadItem:blocksafeSelf];
         }];
-        
         [operation start];
         [self setOperation:operation];
         
@@ -135,13 +153,14 @@
 - (void)removeFile {
     
     NSError *error;
-    if ([[NSFileManager defaultManager] isDeletableFileAtPath:self.path]) {
-        BOOL success = [[NSFileManager defaultManager] removeItemAtPath:self.path error:&error];
+    [self.path startAccessingSecurityScopedResource];
+    if ([[NSFileManager defaultManager] isDeletableFileAtPath:[self.path path]]) {
+        BOOL success = [[NSFileManager defaultManager] removeItemAtURL:self.path error:&error];
         if (!success) {
             NSLog(@"Error removing file at path: %@", error.localizedDescription);
         }
     }
-    
+    [self.path startAccessingSecurityScopedResource];
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder

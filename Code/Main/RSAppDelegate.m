@@ -27,6 +27,7 @@
                                  [NSNumber numberWithBool:YES], kSortDescriptorAscending,
                                  [NSNumber numberWithBool:YES], kCorrector,
                                  [NSNumber numberWithBool:YES], kCheckUpdates,
+                                 [NSNumber numberWithBool:YES], kGetMyMusicOnLogin,
                                  [NSNumber numberWithBool:NO], kShuffle,
                                  [NSNumber numberWithBool:NO], kBroadcast,
                                  [NSNumber numberWithInt:VOLUME_DEFAULT_LEVEL], kVolumeLevel,
@@ -106,6 +107,7 @@
     [self.sheet.autoplayCheckbox setOn:[userDefaults boolForKey:kAutoPlayNextTrack]];
     [self.sheet.correctorCheckbox setOn:[userDefaults boolForKey:kCorrector]];
     [self.sheet.checkUpdatesCheckbox setOn:[userDefaults boolForKey:kCheckUpdates]];
+    [self.sheet.getMyMusicOnLogin setOn:[userDefaults boolForKey:kGetMyMusicOnLogin]];
     
 }
 
@@ -185,6 +187,7 @@
     [userDefaults setBool:self.sheet.autoplayCheckbox.isOn forKey:kAutoPlayNextTrack];
     [userDefaults setBool:self.sheet.correctorCheckbox.isOn forKey:kCorrector];
     [userDefaults setBool:self.sheet.checkUpdatesCheckbox.isOn forKey:kCheckUpdates];
+    [userDefaults setBool:self.sheet.getMyMusicOnLogin.isOn forKey:kGetMyMusicOnLogin];
     [userDefaults synchronize];
 
     if (needReloadDownloadsPaths) {

@@ -26,6 +26,7 @@
 #import "RSAlertView.h"
 #import "AVPlayer+Bonus.h"
 #import "NSMutableArray+Shuffle.h"
+#import "Shortcut.h"
 
 @interface RSMainWindow : GRCustomizableWindow <NSTableViewDataSource, NSTableViewDelegate, RSPlayer, NSWindowDelegate, NSSplitViewDelegate, NSURLConnectionDelegate>
 
