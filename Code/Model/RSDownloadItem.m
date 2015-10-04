@@ -7,6 +7,7 @@
 //
 
 #import "RSDownloadItem.h"
+#import "RSAppDelegate.h"
 
 @implementation RSDownloadItem
 
@@ -14,22 +15,13 @@
     
     RSDownloadItem *downloadItem = [[RSDownloadItem alloc] init];
     
-    NSData *bookmarkData = [[NSUserDefaults standardUserDefaults] objectForKey:kDownloadPathSecureBookmark];
-    NSURL *downloadsDirectory = [NSURL URLByResolvingBookmarkData:bookmarkData
-                                                               options:NSURLBookmarkResolutionWithSecurityScope
-                                                         relativeToURL:nil
-                                                   bookmarkDataIsStale:nil
-                                                                 error:nil];
-    
-    if (!downloadsDirectory)
-        downloadsDirectory = [[NSFileManager defaultManager] URLForDirectory:NSDownloadsDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-    
     NSString *filename = [NSString stringWithFormat:@"%@ - %@", [audioItem.artist clearBadPathSymbols], [audioItem.title clearBadPathSymbols]];
     if ([filename length] > 251) {
         filename = [filename substringWithRange:NSMakeRange(0, 251)];
     }
 
-    NSURL *fileURL = [downloadsDirectory URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp3", filename]];
+    
+    NSURL *fileURL = [[AppDelegate downloadsDirectory] URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp3", filename]];
     downloadItem.path = fileURL;
     downloadItem.duration = audioItem.duration;
     downloadItem.kbps = audioItem.kbps;
@@ -64,7 +56,7 @@
             blocksafeSelf.status = RSDownloadCompleted;
             blocksafeSelf.operation = nil;
             [blocksafeSelf.delegate updateDownloadItem:blocksafeSelf];
-            [blocksafeSelf.path stopAccessingSecurityScopedResource];
+            [[AppDelegate downloadsDirectory] stopAccessingSecurityScopedResource];
             [blocksafeSelf.delegate downloadCompleted];
 
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -91,16 +83,8 @@
             
         }];
         
-        NSData *bookmarkData = [[NSUserDefaults standardUserDefaults] objectForKey:kDownloadPathSecureBookmark];
-        NSURL *downloadsDirectory = [NSURL URLByResolvingBookmarkData:bookmarkData
-                                                              options:NSURLBookmarkResolutionWithSecurityScope
-                                                        relativeToURL:nil
-                                                  bookmarkDataIsStale:nil
-                                                                error:nil];
-        
-        [downloadsDirectory startAccessingSecurityScopedResource];
+        [[AppDelegate downloadsDirectory] startAccessingSecurityScopedResource];
         [AFHTTPRequestOperationManager manager].responseSerializer.acceptableContentTypes = [[AFHTTPRequestOperationManager manager].responseSerializer.acceptableContentTypes setByAddingObject:@"audio/mpeg"];
-//        operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"audio/mpeg"];
         [operation setOutputStream:[NSOutputStream outputStreamWithURL:self.path append:NO]];
         [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
             __strong typeof(weakSelf)blocksafeSelf = weakSelf;
@@ -153,14 +137,14 @@
 - (void)removeFile {
     
     NSError *error;
-    [self.path startAccessingSecurityScopedResource];
+    [[AppDelegate downloadsDirectory] startAccessingSecurityScopedResource];
     if ([[NSFileManager defaultManager] isDeletableFileAtPath:[self.path path]]) {
         BOOL success = [[NSFileManager defaultManager] removeItemAtURL:self.path error:&error];
         if (!success) {
             NSLog(@"Error removing file at path: %@", error.localizedDescription);
         }
     }
-    [self.path startAccessingSecurityScopedResource];
+    [[AppDelegate downloadsDirectory] stopAccessingSecurityScopedResource];
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder

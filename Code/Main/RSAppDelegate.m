@@ -36,6 +36,7 @@
         
 }
 
+
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag {
     
     if ( flag ) {
@@ -208,5 +209,21 @@
     [self.window logout];
     [self closeSheet:sender];
 }
+
+
+- (NSURL *)downloadsDirectory {
+    
+    NSData *bookmarkData = [[NSUserDefaults standardUserDefaults] objectForKey:kDownloadPathSecureBookmark];
+    NSURL *savedDirectory = [NSURL URLByResolvingBookmarkData:bookmarkData
+                                                      options:NSURLBookmarkResolutionWithSecurityScope
+                                                relativeToURL:nil
+                                          bookmarkDataIsStale:nil
+                                                        error:nil];
+    if (savedDirectory)
+        return savedDirectory;
+    else
+        return [[NSFileManager defaultManager] URLForDirectory:NSDownloadsDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+}
+
 
 @end

@@ -17,6 +17,7 @@
 @property (assign) IBOutlet RSOptionsWindow *sheet;
 @property (nonatomic) BOOL optionsMenuEnabled;
 
+- (NSURL *)downloadsDirectory;
 
 - (IBAction)activateSheet:(id)sender;
 - (IBAction)closeSheet:(id)sender;

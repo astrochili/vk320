@@ -45,13 +45,11 @@
         if (result == NSFileHandlingPanelOKButton) {
             [self.downloadsPathField setStringValue:[[panel URL] path]];
             
-            NSError *error = nil;
-            NSData *bookmarkData = nil;
-            bookmarkData = [[panel URL]
-                            bookmarkDataWithOptions:NSURLBookmarkCreationWithSecurityScope
-                            includingResourceValuesForKeys:nil
-                            relativeToURL:nil
-                            error:&error];
+            NSData *bookmarkData = [[panel URL]
+                                    bookmarkDataWithOptions:NSURLBookmarkCreationWithSecurityScope
+                                    includingResourceValuesForKeys:nil
+                                    relativeToURL:nil
+                                    error:nil];
             [[NSUserDefaults standardUserDefaults] setObject:bookmarkData forKey:kDownloadPathSecureBookmark];
         }
     }];
