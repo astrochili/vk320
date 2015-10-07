@@ -42,7 +42,7 @@
 
 #define THANX_URL @"http://vk320.ru/donate/"
 #define UPDATES_URL @"http://vk320.ru/download/"
-#define LAST_VERSION_URL @"http://vk320.ru/version.last"
+#define LAST_VERSION_URL @"http://vk320.ru/lastversion.php"
 #define VK320_URL @"http://vk320.ru"
 
 #define REQUEST_MAX_LIMIT @"300"

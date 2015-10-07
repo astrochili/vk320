@@ -20,6 +20,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
 - (AFHTTPRequestOperationManager *)networkManager {
     if (!_networkManager) {
         _networkManager = [AFHTTPRequestOperationManager manager];
+        [_networkManager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringCacheData];
     }
     return _networkManager;
 }
@@ -139,38 +140,51 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
 - (IBAction)checkUpdates:(id)sender {
         
     NSURL *url = [NSURL URLWithString:LAST_VERSION_URL];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setCachePolicy:NSURLRequestReloadIgnoringCacheData];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
     [operation setCompletionBlockWithSuccess: ^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSString *lastVersion = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSCharacterSet *versionCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789.,ab"];
-        NSCharacterSet *lastVersionSet = [NSCharacterSet characterSetWithCharactersInString:lastVersion];
-        BOOL lastVersionIsCorrect = (lastVersion.length <= 16 && [versionCharacterSet isSupersetOfSet: lastVersionSet]);
-        
-        NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-        
-        if (lastVersionIsCorrect)
+        NSError *error = nil;
+        id object = [NSJSONSerialization
+                     JSONObjectWithData:responseObject
+                     options:0
+                     error:&error];
+        if (error)
+            NSLog(@"%@", [error description]);
+            
+        if ([object isKindOfClass:[NSDictionary class]])
         {
-            if ([lastVersion compare:currentVersion options:NSNumericSearch] == NSOrderedDescending) {
-                NSAlert *alert = [[NSAlert alloc] init];
-                [alert setMessageText:@"Обновление VK320!"];
-                [alert setInformativeText:[NSString stringWithFormat:@"Новая версия %@ доступна для загрузки.\nОтключить уведомления можно в настройках.", lastVersion]];
-                [alert addButtonWithTitle:@"Подробнее"];
-                [alert addButtonWithTitle:@"Позже"];
-                [alert beginSheetModalForWindow:self completionHandler:^(NSModalResponse returnCode) {
-                    if (returnCode == 1000) [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString:UPDATES_URL]];
-                }];
-            } else if ([sender isKindOfClass:[NSMenuItem class]]) {
-                NSString *alertMessage = [NSString stringWithFormat:@"Текущая версия %@. Актуальный релиз %@.", currentVersion, lastVersion];
-                [self.alertView showAlert:alertMessage withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
+            NSDictionary *results = object;
+            NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+            NSString *lastVersion = [results valueForKey:@"lastVersion"];
+            NSCharacterSet *versionCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789.,ab"];
+            NSCharacterSet *lastVersionSet = [NSCharacterSet characterSetWithCharactersInString:lastVersion];
+            BOOL lastVersionIsCorrect = (lastVersion.length <= 16 && [versionCharacterSet isSupersetOfSet: lastVersionSet]);
+            
+            if (lastVersionIsCorrect)
+            {
+                if ([lastVersion compare:currentVersion options:NSNumericSearch] == NSOrderedDescending) {
+                    NSAlert *alert = [[NSAlert alloc] init];
+                    [alert setMessageText:@"Обновление VK320!"];
+                    [alert setInformativeText:[NSString stringWithFormat:@"Новая версия %@ доступна для загрузки.\nОтключить уведомления можно в настройках.", lastVersion]];
+                    [alert addButtonWithTitle:@"Подробнее"];
+                    [alert addButtonWithTitle:@"Позже"];
+                    [alert beginSheetModalForWindow:self completionHandler:^(NSModalResponse returnCode) {
+                        if (returnCode == 1000) [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString:UPDATES_URL]];
+                    }];
+                } else if ([sender isKindOfClass:[NSMenuItem class]]) {
+                    NSString *alertMessage = [NSString stringWithFormat:@"Текущая версия %@. Актуальный релиз %@.", currentVersion, lastVersion];
+                    [self.alertView showAlert:alertMessage withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
+                }
+            } else {
+                [self.alertView showAlert:ALERT_CHECK_UPDATES_FAIL withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
             }
+        } else {
+            [self.alertView showAlert:ALERT_CHECK_UPDATES_FAIL withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
         }
-        
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
-        
         [self.alertView showAlert:ALERT_CHECK_UPDATES_FAIL withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
-        
     }];
     
     [operation start];
