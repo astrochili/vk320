@@ -57,8 +57,13 @@
         
         if (encodedDownloads) {
             NSMutableArray *arrayOfDownloads = [[NSKeyedUnarchiver unarchiveObjectWithData: encodedDownloads] mutableCopy];
+            
             for (RSDownloadItem *downloadItem in arrayOfDownloads) {
                 [downloadItem setDelegate:self.window];
+                if ([downloadItem.path isKindOfClass:[NSString class]])
+                {
+                    downloadItem.path = [NSURL URLWithString:(NSString *)downloadItem.path];
+                }
             }
             
             self.window.downloads = arrayOfDownloads;

@@ -7,7 +7,7 @@
 //
 
 #import "RSMainWindow.h"
-
+#import "RSAppDelegate.h"
 
 @implementation RSMainWindow
 
@@ -2041,7 +2041,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     RSDownloadItem *downloadItem = [self.downloads objectAtIndex:rowNumber];
     
     if (downloadItem.status == RSDownloadCompleted) {
-        
+        [[AppDelegate downloadsDirectory] startAccessingSecurityScopedResource];
         if ([[NSFileManager defaultManager] fileExistsAtPath:[downloadItem.path path]]) {
             [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[downloadItem.path]];
         } else {
@@ -2049,8 +2049,8 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
             NSURL *folderURL = [downloadItem.path URLByDeletingLastPathComponent];
             [[NSWorkspace sharedWorkspace] openURL:folderURL];
         }
+        [[AppDelegate downloadsDirectory] stopAccessingSecurityScopedResource];
     }
-    
 }
 
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange:(NSArray *)oldDescriptors {
