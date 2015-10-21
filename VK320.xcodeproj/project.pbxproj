@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9353826828EE9277D0593DB8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7051748924B5D59D0F19C4D2 /* libPods.a */; };
+		E71B5D261BD80DDF008E34FE /* VK320.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = E71B5D251BD80DDF008E34FE /* VK320.entitlements */; settings = {ASSET_TAGS = (); }; };
 		E72F209F1A62A45D0059C819 /* vkapi.plist in Resources */ = {isa = PBXBuildFile; fileRef = E72F209E1A62A45D0059C819 /* vkapi.plist */; };
 		E760796D19BD0BE9000B9851 /* silent.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E760796C19BD0BE9000B9851 /* silent.mp3 */; };
 		E76247D61A61A65900C7CE2D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7FAFD421954BB5F00AF3364 /* Images.xcassets */; };
@@ -68,6 +69,7 @@
 		E71AE18E198A6FB500238317 /* NSImage+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Rotate.m"; sourceTree = "<group>"; };
 		E71AE190198A735800238317 /* HoverButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoverButtonView.h; sourceTree = "<group>"; };
 		E71AE191198A735800238317 /* HoverButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoverButtonView.m; sourceTree = "<group>"; };
+		E71B5D251BD80DDF008E34FE /* VK320.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = VK320.entitlements; sourceTree = "<group>"; };
 		E71CFA0919713E1900270A3D /* RSOptionsWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSOptionsWindow.h; sourceTree = "<group>"; };
 		E71CFA0A19713E1900270A3D /* RSOptionsWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSOptionsWindow.m; sourceTree = "<group>"; };
 		E71CFA0E1971A9A700270A3D /* RSNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSNumberFormatter.h; sourceTree = "<group>"; };
@@ -91,7 +93,6 @@
 		E762431F1978623300AF6861 /* NSColor+PXExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+PXExtentions.m"; sourceTree = "<group>"; };
 		E7624324197872C600AF6861 /* RSTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTextCell.h; sourceTree = "<group>"; };
 		E7624325197872C600AF6861 /* RSTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTextCell.m; sourceTree = "<group>"; };
-		E76C63D4199A5FE0006C6E56 /* VK320.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VK320.entitlements; sourceTree = "<group>"; };
 		E76C70931994F4CF007967A4 /* ScrollingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingTextView.h; sourceTree = "<group>"; };
 		E76C70941994F4CF007967A4 /* ScrollingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollingTextView.m; sourceTree = "<group>"; };
 		E77D3A1E1956221A00B16584 /* RSAudioItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAudioItem.h; sourceTree = "<group>"; };
@@ -321,7 +322,7 @@
 				E7FAFD361954BB5F00AF3364 /* main.m */,
 				E7FAFD381954BB5F00AF3364 /* VK320-Prefix.pch */,
 				E7FAFD321954BB5F00AF3364 /* VK320-Info.plist */,
-				E76C63D4199A5FE0006C6E56 /* VK320.entitlements */,
+				E71B5D251BD80DDF008E34FE /* VK320.entitlements */,
 				E7C1FEFC1A61CF6500565735 /* Credits.rtf */,
 				E72F209E1A62A45D0059C819 /* vkapi.plist */,
 				E72F20A01A62AF600059C819 /* LICENCE */,
@@ -370,7 +371,7 @@
 								enabled = 0;
 							};
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -399,6 +400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E71B5D261BD80DDF008E34FE /* VK320.entitlements in Resources */,
 				E7C1FEFF1A61CF6500565735 /* Credits.rtf in Resources */,
 				E76247D61A61A65900C7CE2D /* Images.xcassets in Resources */,
 				E72F209F1A62A45D0059C819 /* vkapi.plist in Resources */,
