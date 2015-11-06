@@ -1026,8 +1026,10 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
 
 - (IBAction)clickPlayerPlayPause:(id)sender {
     
-    if (![self.playerNextButton isEnabled])
-        return;
+//  What has made this garbage?!
+//
+//    if (![self.playerNextButton isEnabled])
+//        return;
     
     if (self.player.rate == 0.0f) {
         [self.player play];
@@ -1246,45 +1248,28 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
 
 - (void)logout {
     
+    // Let's say to user the very important message
     [self.alertView showAlert:ALERT_LOGOUT withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:NO];
     
-    if (self.access_token) {
-
-        NSString *logoutUrl = self.configuration[@"LOGOUT_URL"];
-        NSString *domain = self.configuration[@"DOMAIN"];
-        NSString *urlString = [NSString stringWithFormat:@"%@?aid=%@&scope=%@&token=%@&domain=%@", logoutUrl, self.appId, VK_SCOPE, self.access_token, domain];
-        NSURL *url = [NSURL URLWithString:urlString];
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
-        [operation setCompletionBlockWithSuccess: ^(AFHTTPRequestOperation *operation, id responseObject) {
-            
-            NSString *responseHtml = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-            NSString *responseUrl = [[[operation response] URL] absoluteString];
-            [self.webView setMainFrameURL:responseUrl];
-            [[self.webView mainFrame] loadHTMLString:responseHtml baseURL:[[operation response] URL]];
-            [self.alertView showAlert:ALERT_CONNECTION_TRY_API withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:NO];
-            
-        } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
-            
-            [self showError:error withType:RSErrorNetwork];
-            
-        }];
-        
-        [operation start];
-        self.access_token = nil;
-        self.user_id = nil;
-        [self.searchField setEnabled:NO];
-        [self.searchField setStringValue:@""];
-        self.results = nil;
-        [self.resultsTableView reloadData];
-        [self updateUsernameAndAvatar];
-        
-    } else {
-        
-        [self login];
-        NSLog(@"user is already logged out");
-        
+    // For logout we just cleans the cookies for vk.com
+    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [cookieJar cookies]) {
+        if ([[cookie domain] rangeOfString:@"vk.com"].location != NSNotFound) {
+            [cookieJar deleteCookie:cookie];
+        }
     }
+    // It needs saving? pffff..
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    // Okay, now we begin life with a clean slate
+    self.access_token = nil;
+    self.user_id = nil;
+    [self.searchField setEnabled:NO];
+    [self.searchField setStringValue:@""];
+    self.results = nil;
+    [self.resultsTableView reloadData];
+    [self updateUsernameAndAvatar];
+    [self login];
 }
 
 - (void)updateUsernameAndAvatar {

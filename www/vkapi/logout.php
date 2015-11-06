@@ -20,9 +20,9 @@
 		echo "API logout arguments error";
 	} else {
 		echo "<script src=\"https://login.vk.com/?act=openapi&oauth=1&aid=$aid&location=$domain&do_logout=1&token=$token\"></script>";
-    	echo "<script type=\"text/javascript\">";
-    	echo "window.onload = function() {window.location.href = 'https://oauth.vk.com/authorize?client_id=$aid>&scope=$scope&redirect_uri=https://oauth.vk.com/blank.html&response_type=token&display=mobile';}";
-    	echo "</script>";
+    	//echo "<script type=\"text/javascript\">";
+    	//echo "window.onload = function() {window.location.href = 'https://oauth.vk.com/authorize?client_id=$aid>&scope=$scope&redirect_uri=https://oauth.vk.com/blank.html&response_type=token&display=mobile';}";
+    	//echo "</script>";
 	}
 
 ?>
