@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9353826828EE9277D0593DB8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7051748924B5D59D0F19C4D2 /* libPods.a */; };
-		E71B5D261BD80DDF008E34FE /* VK320.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = E71B5D251BD80DDF008E34FE /* VK320.entitlements */; settings = {ASSET_TAGS = (); }; };
+		E71B5D261BD80DDF008E34FE /* VK320.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = E71B5D251BD80DDF008E34FE /* VK320.entitlements */; };
 		E72F209F1A62A45D0059C819 /* vkapi.plist in Resources */ = {isa = PBXBuildFile; fileRef = E72F209E1A62A45D0059C819 /* vkapi.plist */; };
 		E760796D19BD0BE9000B9851 /* silent.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E760796C19BD0BE9000B9851 /* silent.mp3 */; };
 		E76247D61A61A65900C7CE2D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7FAFD421954BB5F00AF3364 /* Images.xcassets */; };
