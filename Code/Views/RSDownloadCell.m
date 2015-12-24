@@ -20,7 +20,7 @@
     if (![pathBack isEmpty]) {
         [pathBack addClip];
     }
-    [[NSColor pxColorWithHexValue:COLOR_BAR_GRAY] set];
+    [self.emptyColor set];
     [NSBezierPath fillRect:rectBack];
     
     CGRect rectProgress = [self bounds];

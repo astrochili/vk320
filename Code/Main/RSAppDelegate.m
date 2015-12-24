@@ -60,9 +60,13 @@
             
             for (RSDownloadItem *downloadItem in arrayOfDownloads) {
                 [downloadItem setDelegate:self.window];
-                if ([downloadItem.path isKindOfClass:[NSString class]])
-                {
+                bool oldVersionFormat = [downloadItem.path isKindOfClass:[NSString class]];
+                if (oldVersionFormat) {
                     downloadItem.path = [NSURL URLWithString:(NSString *)downloadItem.path];
+                }
+                bool exist = ([[NSFileManager defaultManager] fileExistsAtPath:[downloadItem.path path]]);
+                if (!exist || downloadItem.status != RSDownloadCompleted) {
+                    [downloadItem resetWithNoFile];
                 }
             }
             

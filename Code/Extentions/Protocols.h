@@ -69,6 +69,7 @@
 #define COLOR_BAR_YELLOW @"CEDC00"
 #define COLOR_BAR_GREEN @"4CDC00"
 #define COLOR_BAR_GRAY @"CDD5DA"
+#define COLOR_BAR_RED @"D1868F"
 #define COLOR_HIGHLIGHT @"c8e6f4"
 #define COLOR_HIGHLIGHT_LITE @"e9f0f4"
 #define COLOR_ALERT_BLUE @"0099DC"
@@ -114,7 +115,8 @@ typedef NS_ENUM(NSUInteger, RSDownloadStatus) {
     RSDownloadReady = 1, // Только что иницилизированый объект, далее автоматом превращается либо в 0 либо в 2.
     RSDownloadInProgress = 2, // В процессе загрузки
     RSDownloadPause = 3, // На паузе
-    RSDownloadCompleted = 4 // Загрузка завершена
+    RSDownloadCompleted = 4, // Загрузка завершена
+    RSDownloadFileNotFound = 5 // Загрузка была завершена, но файла больше нет
 };
 
 typedef NS_ENUM(NSUInteger, RSAutoscrollStatus) {
@@ -143,6 +145,7 @@ typedef NS_ENUM(NSUInteger, RSErrorType) {
 - (void)stopMusic;
 - (void)addDownloadFromAudioItem:(RSAudioItem *)audioItem;
 - (void)updateDownloadItem:(RSDownloadItem *)downloadItem;
+- (void)updateAudioItem:(RSAudioItem *)audioItem;
 - (BOOL)readyForStartDownload;
 - (void)downloadCompleted;
 - (void)updateDownloadsButtons;

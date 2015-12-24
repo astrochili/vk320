@@ -397,8 +397,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
             [self startDownloadItem:downloadItem];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//            [self.alertView showAlert:ALERT_CONNECTION_FILESIZE_ERROR withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_YELLOW] autoHide:YES];
-            NSLog(@"Error: %@", error);            
+            NSLog(@"Error: %@", error);
         }];
         
     } else {
@@ -409,20 +408,20 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     }
     
     [self updatePlayerUI];
-    [self.resultsTableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:[self.results indexOfObject:audioItem]] columnIndexes:[NSIndexSet indexSetWithIndex:[self.resultsTableView columnWithIdentifier:@"Actions"]]];
-    
+    [self updateAudioItem:audioItem];
 }
 
 - (void)startDownloadItem:(RSDownloadItem *)downloadItem {
     
     [downloadItem setDelegate:self];
+    [self.downloads removeObject:downloadItem.audioItem.downloadItem]; // Удалим старую строчку с "Файл не найден"
     [downloadItem.audioItem setDownloadItem:downloadItem];
     if (!self.downloads) {
         self.downloads = [[NSMutableArray alloc]initWithObjects:downloadItem, nil];
     } else {
         [self.downloads insertObject:downloadItem atIndex:0];
     }
-    [downloadItem startDownload];
+    [downloadItem start];
     [self.downloadsTableView reloadData];
     [self updateDownloadsButtons];
     if ([self.downloadsTableView numberOfRows] > 0) {
@@ -440,7 +439,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
 - (void)updateDownloadItem:(RSDownloadItem *)downloadItem {
     
     if (!downloadItem) {
-        NSLog(@"!!! downloadItem = nil");
+        NSLog(@"! updateDownloadItem: nil");
     }
     
     if ([self.downloads containsObject:downloadItem]) {
@@ -448,7 +447,14 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         [self.downloadsTableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:row]
                                            columnIndexes:[NSIndexSet indexSetWithIndex:[self.downloadsTableView columnWithIdentifier:@"DownloadBar"]]];
     }
+}
 
+- (void)updateAudioItem:(RSAudioItem *)audioItem {
+    if (audioItem != nil) {
+        NSIndexSet *setOfRows = [NSIndexSet indexSetWithIndex:[self.results indexOfObject:audioItem]];
+        NSIndexSet *setOfColumns = [NSIndexSet indexSetWithIndex:[self.resultsTableView columnWithIdentifier:@"Actions"]];
+        [self.resultsTableView reloadDataForRowIndexes:setOfRows columnIndexes:setOfColumns];
+    }
 }
 
 - (void)updateAfterCloseSettings {
@@ -486,9 +492,8 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     }
     
     if (([readyDownloadItems count] > 0) && (currentStreams < [self streamsLimit])) {
-        
-        [readyDownloadItems[readyDownloadItems.count-1] startDownload];
-        
+        RSDownloadItem *downloadItem = (RSDownloadItem *)readyDownloadItems[readyDownloadItems.count-1];
+        [downloadItem start];
     }
 
     [self updateDownloadsButtons];
@@ -543,7 +548,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
             if (downloadItem.status == RSDownloadInProgress) {
                 currentStreams ++;
             }
-            if ((downloadItem.status == RSDownloadReady || downloadItem.status == RSDownloadPause) && [selectedIndexes containsIndex:[self.downloads indexOfObject:downloadItem]]) {
+            if ((downloadItem.status == RSDownloadReady || downloadItem.status == RSDownloadPause || downloadItem.status == RSDownloadFileNotFound) && [selectedIndexes containsIndex:[self.downloads indexOfObject:downloadItem]]) {
                 [readyDownloadItemsInSelected addObject:downloadItem];
             }
         }
@@ -552,11 +557,17 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
             NSArray *readyDownloadItemsInSelectedReversed = [[readyDownloadItemsInSelected reverseObjectEnumerator] allObjects];
             for (RSDownloadItem *downloadItem in readyDownloadItemsInSelectedReversed) {
                 if (currentStreams < [self streamsLimit]) {
-                    if (downloadItem.status == RSDownloadReady) {
-                        [downloadItem startDownload];
+                    if (downloadItem.status == RSDownloadReady || downloadItem.status == RSDownloadFileNotFound) {
+                        [downloadItem start];
                     } else if (downloadItem.status == RSDownloadPause) {
-                        [downloadItem resumeDownload];
+                        bool exist = ([[NSFileManager defaultManager] fileExistsAtPath:[downloadItem.path path]]);
+                        if (exist) {
+                            [downloadItem resume];
+                        } else {
+                            [downloadItem start];
+                        }
                     }
+                    [self updateAudioItem:downloadItem.audioItem];                    
                     currentStreams ++;
                 }
                 
@@ -584,7 +595,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         
         if ([currentStreamsInSelected count] > 0) {
             for (RSDownloadItem *downloadItem in currentStreamsInSelected) {
-              [downloadItem pauseDownload];
+              [downloadItem pause];
             }
         }
         
@@ -602,17 +613,11 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         for (RSDownloadItem *downloadItem in self.downloads) {
             if ([selectedIndexes containsIndex:[self.downloads indexOfObject:downloadItem]]) {
                 if (downloadItem.operation) {
-                    [downloadItem pauseDownload];
+                    [downloadItem pause];
                     [downloadItem removeFile];
                 }
-                
-                if (downloadItem.audioItem != nil) {
-                    [downloadItem.audioItem setDownloadItem:nil];
-                    NSIndexSet *setOfRows = [NSIndexSet indexSetWithIndex:[self.results indexOfObject:downloadItem.audioItem]];
-                    NSIndexSet *setOfColumns = [NSIndexSet indexSetWithIndex:[self.resultsTableView columnWithIdentifier:@"Actions"]];
-                    [self.resultsTableView reloadDataForRowIndexes:setOfRows columnIndexes:setOfColumns];
-                }
-                
+                [downloadItem.audioItem setDownloadItem:nil];
+                [self updateAudioItem:downloadItem.audioItem];
             }
         }
         
@@ -620,7 +625,6 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         [self.downloadsTableView reloadData];
         [self updateDownloadsButtons];
         [self updatePlayerUI];
-        
     }
     
 }
@@ -694,7 +698,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
                     currentStreamsInSelected ++;
                 }
             }
-            if ((downloadItem.status == RSDownloadReady || downloadItem.status == RSDownloadPause) && [selectedIndexes containsIndex:[self.downloads indexOfObject:downloadItem]]) {
+            if ((downloadItem.status == RSDownloadReady || downloadItem.status == RSDownloadPause || downloadItem.status == RSDownloadFileNotFound) && [selectedIndexes containsIndex:[self.downloads indexOfObject:downloadItem]]) {
                 readyDownloadItemsInSelected ++;
             }
         }
@@ -855,11 +859,12 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         
         // На случай, если мы скачали этот трек, давайте воспроизводить его из файла
         RSDownloadItem *downloadItem = actionsCell.audioItem.downloadItem;
-        if (downloadItem) {
-            bool downloaded = downloadItem.status == RSDownloadCompleted;
+        if (downloadItem && downloadItem.status == RSDownloadCompleted) {
             bool exist = ([[NSFileManager defaultManager] fileExistsAtPath:[downloadItem.path path]]);
-            if (downloaded && exist) {
+            if (exist) {
                 url = downloadItem.path;
+            } else {
+                [downloadItem resetWithNoFile];
             }
         }
         
@@ -2050,9 +2055,9 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         if ([[NSFileManager defaultManager] fileExistsAtPath:[downloadItem.path path]]) {
             [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[downloadItem.path]];
         } else {
+            [downloadItem resetWithNoFile];
+            [self updateDownloadsButtons];
             [self.alertView showAlert:@"Файл не найден" withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_YELLOW] autoHide:YES];
-            NSURL *folderURL = [downloadItem.path URLByDeletingLastPathComponent];
-            [[NSWorkspace sharedWorkspace] openURL:folderURL];
         }
         [[AppDelegate downloadsDirectory] stopAccessingSecurityScopedResource];
     }
@@ -2136,7 +2141,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
                 }
             }
             
-            [actionsCell.downloadButton setHidden:(audioItem.downloadItem != nil)];
+            [actionsCell.downloadButton setHidden:(audioItem.downloadItem != nil && audioItem.downloadItem.status != RSDownloadFileNotFound)];
 
             return actionsCell;
             
@@ -2177,6 +2182,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
             RSDownloadCell *downloadCell = [tableView makeViewWithIdentifier:identifier owner:self];
             downloadCell.progress = (float)downloadItem.sizeDownloaded / (float)downloadItem.size;
             NSString *progressString = @"В очереди";
+            [downloadCell setEmptyColor:[NSColor pxColorWithHexValue:COLOR_BAR_GRAY]];
             if (downloadItem.status == RSDownloadReady) {
                 progressString = [NSString stringWithFormat:@"В очереди"];
             } else if (downloadItem.status == RSDownloadAddedJustNow) {
@@ -2190,7 +2196,11 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
             } else if (downloadItem.status == RSDownloadCompleted) {
                 [downloadCell setBarColor:[NSColor pxColorWithHexValue:COLOR_BAR_GREEN]];
                 progressString = [NSString stringWithFormat:@"%.2f Мб", (float)downloadItem.size/1024/1024];
+            } else if (downloadItem.status == RSDownloadFileNotFound) {
+                [downloadCell setEmptyColor:[NSColor pxColorWithHexValue:COLOR_BAR_RED]];
+                progressString = @"Файл не найден";
             }
+
             [downloadCell.textField setStringValue:progressString];
             
             return downloadCell;

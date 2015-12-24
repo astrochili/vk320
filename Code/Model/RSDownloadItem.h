@@ -29,9 +29,10 @@
 
 
 + (RSDownloadItem *)initWithAudioItem:(RSAudioItem *)audioItem;
-- (void)startDownload;
-- (void)pauseDownload;
-- (void)resumeDownload;
+- (void)start;
+- (void)pause;
+- (void)resume;
 - (void)removeFile;
+- (void)resetWithNoFile;
 
 @end

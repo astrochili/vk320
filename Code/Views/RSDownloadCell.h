@@ -13,6 +13,7 @@
 @interface RSDownloadCell : NSTableCellView
 
 @property float progress; // from 0.0 to 1.0
+@property (strong, nonatomic) NSColor *emptyColor;
 @property (strong, nonatomic) NSColor *barColor;
 @property (weak, nonatomic) IBOutlet NSTextField *sizeField;
 

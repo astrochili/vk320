@@ -100,6 +100,7 @@
 - (void)playFromActionsCell:(RSActionsCell *)actionsCell;
 - (void)endOfTrack;
 - (void)updateDownloadItem:(RSDownloadItem *)downloadItem;
+- (void)updateAudioItem:(RSAudioItem *)audioItem;
 - (void)updateAfterCloseSettings;
 - (void)sortResults;
 - (void)updateDownloadsButtons;

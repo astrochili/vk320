@@ -36,7 +36,7 @@
     
 }
 
-- (void)startDownload {
+- (void)start {
     
     if ([self.delegate readyForStartDownload]) {
         
@@ -106,7 +106,7 @@
     
 }
 
-- (void)pauseDownload {
+- (void)pause {
     
     if (self.operation && [self.operation isExecuting]) {
         [self.operation pause];
@@ -116,7 +116,7 @@
     
 }
 
-- (void)resumeDownload {
+- (void)resume {
 
     if (self.operation && [self.operation isPaused]) {
         
@@ -134,6 +134,13 @@
 
 }
 
+- (void)resetWithNoFile {
+    self.status = RSDownloadFileNotFound;
+    self.sizeDownloaded = 0;
+    [self.delegate updateDownloadItem:self];
+    [self.delegate updateAudioItem:self.audioItem];
+}
+
 - (void)removeFile {
     
     NSError *error;
@@ -147,26 +154,23 @@
     [[AppDelegate downloadsDirectory] stopAccessingSecurityScopedResource];
 }
 
-- (void)encodeWithCoder:(NSCoder *)encoder
-{
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    
 	[encoder encodeObject:self.path forKey:@"path"];
 	[encoder encodeInteger:self.duration forKey:@"duration"];
 	[encoder encodeInteger:self.size forKey:@"size"];
    	[encoder encodeInteger:self.kbps forKey:@"kbps"];
 	[encoder encodeObject:self.vkID forKey:@"vkID"];
-    	[encoder encodeObject:self.url forKey:@"url"];
-    if (self.status != RSDownloadCompleted) {
-        self.status = RSDownloadReady;
-    }
+    [encoder encodeObject:self.url forKey:@"url"];
 	[encoder encodeInteger:self.status forKey:@"status"];
+	[encoder encodeInteger:self.sizeDownloaded forKey:@"sizeDownloaded"];
     
 }
 
-- (id)initWithCoder:(NSCoder *)decoder
-{
+- (id)initWithCoder:(NSCoder *)decoder {
+    
 	self = [super init];
-	if( self != nil )
-	{
+	if( self != nil ) {
         self.path = [decoder decodeObjectForKey:@"path"];
         self.duration = [decoder decodeIntegerForKey:@"duration"];
         self.size = [decoder decodeIntegerForKey:@"size"];
@@ -174,9 +178,8 @@
         self.url = [decoder decodeObjectForKey:@"url"];
         self.vkID = [decoder decodeObjectForKey:@"vkID"];
         self.status = [decoder decodeIntegerForKey:@"status"];
-        self.sizeDownloaded = (self.status == RSDownloadCompleted)? self.size : 0;
+        self.sizeDownloaded = [decoder decodeIntegerForKey:@"sizeDownloaded"];
         self.operation = nil;
-        
 	}
 	return self;
 }
