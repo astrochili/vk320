@@ -20,7 +20,6 @@
         filename = [filename substringWithRange:NSMakeRange(0, 251)];
     }
 
-    
     NSURL *fileURL = [[AppDelegate downloadsDirectory] URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp3", filename]];
     downloadItem.path = fileURL;
     downloadItem.duration = audioItem.duration;
@@ -31,6 +30,7 @@
     downloadItem.status = RSDownloadAddedJustNow;
     downloadItem.operation = nil;
     downloadItem.audioItem = audioItem;
+    downloadItem.vkID = audioItem.vkID;
     
     return downloadItem;
     
@@ -153,7 +153,8 @@
 	[encoder encodeInteger:self.duration forKey:@"duration"];
 	[encoder encodeInteger:self.size forKey:@"size"];
    	[encoder encodeInteger:self.kbps forKey:@"kbps"];
-	[encoder encodeObject:self.url forKey:@"url"];
+	[encoder encodeObject:self.vkID forKey:@"vkID"];
+    	[encoder encodeObject:self.url forKey:@"url"];
     if (self.status != RSDownloadCompleted) {
         self.status = RSDownloadReady;
     }
@@ -171,6 +172,7 @@
         self.size = [decoder decodeIntegerForKey:@"size"];
         self.kbps = [decoder decodeIntegerForKey:@"kbps"];
         self.url = [decoder decodeObjectForKey:@"url"];
+        self.vkID = [decoder decodeObjectForKey:@"vkID"];
         self.status = [decoder decodeIntegerForKey:@"status"];
         self.sizeDownloaded = (self.status == RSDownloadCompleted)? self.size : 0;
         self.operation = nil;

@@ -416,7 +416,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
 - (void)startDownloadItem:(RSDownloadItem *)downloadItem {
     
     [downloadItem setDelegate:self];
-    [downloadItem.audioItem setInDownloads:YES];
+    [downloadItem.audioItem setDownloadItem:downloadItem];
     if (!self.downloads) {
         self.downloads = [[NSMutableArray alloc]initWithObjects:downloadItem, nil];
     } else {
@@ -605,12 +605,11 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
                     [downloadItem pauseDownload];
                     [downloadItem removeFile];
                 }
-                [downloadItem.audioItem setInDownloads:NO];
                 
                 if (downloadItem.audioItem != nil) {
+                    [downloadItem.audioItem setDownloadItem:nil];
                     NSIndexSet *setOfRows = [NSIndexSet indexSetWithIndex:[self.results indexOfObject:downloadItem.audioItem]];
                     NSIndexSet *setOfColumns = [NSIndexSet indexSetWithIndex:[self.resultsTableView columnWithIdentifier:@"Actions"]];
-                    
                     [self.resultsTableView reloadDataForRowIndexes:setOfRows columnIndexes:setOfColumns];
                 }
                 
@@ -729,7 +728,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     for (RSAudioItem *audioItem in self.results) {
         if ([selectedIndexes containsIndex:[self.results indexOfObject:audioItem]]) {
             
-            if (!audioItem.inDownloads) {
+            if (!audioItem.downloadItem) {
                 [self addDownloadFromAudioItem:audioItem];
             }
             
@@ -853,6 +852,17 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         [self.playerItem removeObserver:self forKeyPath:@"status" context:&PlayerItemContext];
         
         NSURL *url = [NSURL URLWithString:actionsCell.audioItem.url];
+        
+        // На случай, если мы скачали этот трек, давайте воспроизводить его из файла
+        RSDownloadItem *downloadItem = actionsCell.audioItem.downloadItem;
+        if (downloadItem) {
+            bool downloaded = downloadItem.status == RSDownloadCompleted;
+            bool exist = ([[NSFileManager defaultManager] fileExistsAtPath:[downloadItem.path path]]);
+            if (downloaded && exist) {
+                url = downloadItem.path;
+            }
+        }
+        
         AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:url options:nil];
         NSArray *keys     = [NSArray arrayWithObject:@"playable"];
         self.playerItem = [AVPlayerItem playerItemWithAsset:asset];
@@ -1181,7 +1191,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         [self.playerTime1 setStringValue:[self stringFromDuration:CMTimeGetSeconds([self.player currentTime])]];
         [self.playerTime2 setStringValue:[NSString stringWithFormat:@"-%@",[self stringFromDuration:CMTimeGetSeconds([[self.player currentItem] duration]) - CMTimeGetSeconds([self.player currentTime])]]];
         
-        [self.playerDownloadButton setEnabled:!self.currentAudioItem.inDownloads];
+        [self.playerDownloadButton setEnabled:!self.currentAudioItem.downloadItem];
         
         BOOL addedToVK = NO;
         if (self.currentAudioItem.owner_id == self.user_id || self.currentAudioItem.addedToVK) {
@@ -1243,7 +1253,6 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     }];
     
     [operation start];
-    
 }
 
 - (void)logout {
@@ -1769,14 +1778,17 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     // Отправим запросы на размеры файлов
     [[self.networkManager operationQueue] setMaxConcurrentOperationCount:MAX_NETWORK_CONCURRENT_OPERATION_COUNT];
     for (RSAudioItem *audioItem in arrayOfAudioItems) {
-        
-        [self.networkManager HEAD:audioItem.url parameters:nil success:^(AFHTTPRequestOperation *operation) {
-            [self didReceiveResponse:[operation response] forVkID:audioItem.vkID];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//            [self.alertView showAlert:ALERT_CONNECTION_FILESIZE_ERROR withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_YELLOW] autoHide:YES];
-            NSLog(@"Error: %@", error);
-        }];
-        
+        if (audioItem.downloadItem) {
+            audioItem.size = audioItem.downloadItem.size;
+            audioItem.kbps = audioItem.downloadItem.kbps;
+        } else {
+            [self.networkManager HEAD:audioItem.url parameters:nil success:^(AFHTTPRequestOperation *operation) {
+                [self didReceiveResponse:[operation response] forVkID:audioItem.vkID];
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                //            [self.alertView showAlert:ALERT_CONNECTION_FILESIZE_ERROR withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_YELLOW] autoHide:YES];
+                NSLog(@"Error: %@", error);
+            }];
+        }
     }
     
     return arrayOfAudioItems;
@@ -1799,6 +1811,14 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
                                                     vkID:vkID
                                                 owner_id:owner_id
                                                addedToVK:NO];
+    for (RSDownloadItem *downloadItem in self.downloads) {
+        if ([downloadItem.vkID isEqualToString: audioItem.vkID]) {
+            audioItem.downloadItem = downloadItem;
+            downloadItem.audioItem = audioItem;
+            break;
+        }
+    }
+
     return audioItem;
     
 }
@@ -1974,7 +1994,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         for (RSAudioItem *audioItem in self.results) {
             if ([selectedIndexes containsIndex:[self.results indexOfObject:audioItem]]) {
                 
-                if (audioItem.inDownloads) {
+                if (audioItem.downloadItem) {
                     readyForDownloadCount--;
                 }
                 
@@ -2116,7 +2136,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
                 }
             }
             
-            [actionsCell.downloadButton setHidden:audioItem.inDownloads];
+            [actionsCell.downloadButton setHidden:(audioItem.downloadItem != nil)];
 
             return actionsCell;
             

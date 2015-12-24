@@ -25,6 +25,7 @@
 @property (nonatomic) enum RSDownloadStatus status;
 @property (weak, nonatomic) id <RSPlayer> delegate;
 @property (weak, nonatomic) RSAudioItem *audioItem;
+@property (strong, nonatomic) NSString *vkID;
 
 
 + (RSDownloadItem *)initWithAudioItem:(RSAudioItem *)audioItem;
