@@ -179,14 +179,14 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    if ([userDefaults integerForKey:kUseFullPaths] != self.sheet.fullPathCheckbox.isEnabled) {
+    if ([userDefaults boolForKey:kUseFullPaths] != self.sheet.fullPathCheckbox.isEnabled) {
         [self.window updateAfterCloseSettings];
     }
     if ([userDefaults integerForKey:kFilterKbps] != self.sheet.filterKbpsField.integerValue) {
         [self.window sortResults];
         [self.window.resultsTableView reloadData];
     }
-    if ([userDefaults integerForKey:kGlobalHotKeys] != self.sheet.globalHotKeys.isEnabled) {
+    if ([userDefaults boolForKey:kGlobalHotKeys] != self.sheet.globalHotKeys.isEnabled) {
         [self turnGlobalHotKeysTo:self.sheet.globalHotKeys.isEnabled];
     }
     
