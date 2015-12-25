@@ -178,17 +178,10 @@
     [self.sheet.streamsLimitField display];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    
-    if ([userDefaults boolForKey:kUseFullPaths] != self.sheet.fullPathCheckbox.isEnabled) {
-        [self.window updateAfterCloseSettings];
-    }
-    if ([userDefaults integerForKey:kFilterKbps] != self.sheet.filterKbpsField.integerValue) {
-        [self.window sortResults];
-        [self.window.resultsTableView reloadData];
-    }
-    if ([userDefaults boolForKey:kGlobalHotKeys] != self.sheet.globalHotKeys.isEnabled) {
-        [self turnGlobalHotKeysTo:self.sheet.globalHotKeys.isEnabled];
-    }
+
+    // Запомним что нужно обновить, пока не записали изменения в userDefaults, обновим лишь после записи
+    bool downloadsNeedsForUpdate = [userDefaults boolForKey:kUseFullPaths] != self.sheet.fullPathCheckbox.isOn;
+    bool hotkeysNeedsForUpdate = [userDefaults boolForKey:kGlobalHotKeys] != self.sheet.globalHotKeys.isOn;
     
     [userDefaults setObject:self.sheet.downloadsPathField.stringValue forKey:kDownloadPath];
     [userDefaults setInteger:[self.sheet.requestLimitField.stringValue intValue] forKey:kRequestLimit];
@@ -204,6 +197,15 @@
     [userDefaults setBool:self.sheet.getMyMusicOnLogin.isOn forKey:kGetMyMusicOnLogin];
     [userDefaults setBool:self.sheet.globalHotKeys.isOn forKey:kGlobalHotKeys];
     [userDefaults synchronize];
+    
+    if (downloadsNeedsForUpdate) {
+        // Обновим столбец с именем файла
+        [self.window.downloadsTableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.window.downloads count])] columnIndexes:[NSIndexSet indexSetWithIndex:[self.window.downloadsTableView columnWithIdentifier:@"File"]]];
+    }
+    if (hotkeysNeedsForUpdate) {
+        // Обновим статус глобальных горячих клавиш
+        [self turnGlobalHotKeysTo:self.sheet.globalHotKeys.isOn];
+    }
     
     [NSApp endSheet:self.sheet];
     [self.sheet close];

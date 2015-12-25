@@ -447,12 +447,6 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     }
 }
 
-- (void)updateAfterCloseSettings {
-    
-    [self.downloadsTableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.downloads count])] columnIndexes:[NSIndexSet indexSetWithIndex:[self.downloadsTableView columnWithIdentifier:@"File"]]];
-    
-}
-
 - (BOOL)readyForStartDownload {
     
     int currentStreams = 0;
