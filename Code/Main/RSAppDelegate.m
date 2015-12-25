@@ -248,9 +248,7 @@
             [self.window clickPlayerNext:nil];
         }];
     } else {
-        // Почему-то не работает...
         [[MASShortcutMonitor sharedMonitor] unregisterAllShortcuts];
-        // В итоге отключить глобальные клавиши можно лишь после перезапуска
     }
 }
 
