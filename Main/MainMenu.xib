@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="9060"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -1118,10 +1118,10 @@ CA
         <window title="Настройки" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="k56-0Q-D7U" customClass="RSOptionsWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="591" height="432"/>
+            <rect key="contentRect" x="196" y="240" width="591" height="457"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" id="hd4-NL-Lcz">
-                <rect key="frame" x="0.0" y="0.0" width="591" height="432"/>
+                <rect key="frame" x="0.0" y="0.0" width="591" height="457"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" id="zba-Gb-ZPd">
@@ -1140,7 +1140,7 @@ Gw
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" id="Y9X-JD-X58">
-                        <rect key="frame" x="160" y="390" width="380" height="22"/>
+                        <rect key="frame" x="160" y="415" width="380" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Выберите путь к папке для сохранения загрузок" drawsBackground="YES" id="wGV-Kl-pn0">
@@ -1150,7 +1150,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" id="A9z-0d-aem">
-                        <rect key="frame" x="160" y="360" width="46" height="22"/>
+                        <rect key="frame" x="160" y="385" width="46" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="30" drawsBackground="YES" id="KT2-Q2-VrS">
@@ -1163,7 +1163,7 @@ Gw
                         </connections>
                     </textField>
                     <textField verticalHuggingPriority="750" id="ei2-Ll-IoT">
-                        <rect key="frame" x="160" y="300" width="46" height="22"/>
+                        <rect key="frame" x="160" y="325" width="46" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="5" drawsBackground="YES" id="5VF-4P-4Jy">
@@ -1176,7 +1176,7 @@ Gw
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="B1g-Zd-sr2">
-                        <rect key="frame" x="4" y="393" width="150" height="17"/>
+                        <rect key="frame" x="4" y="418" width="150" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Папка для загрузок:" id="OZR-vC-fbn">
@@ -1186,7 +1186,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="lvD-67-Xru">
-                        <rect key="frame" x="4" y="363" width="150" height="17"/>
+                        <rect key="frame" x="4" y="388" width="150" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Лимит поиска:" id="foE-dU-ofX">
@@ -1196,7 +1196,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="24u-Iv-pRS">
-                        <rect key="frame" x="4" y="303" width="150" height="17"/>
+                        <rect key="frame" x="4" y="328" width="150" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Лимит загрузок:" id="yLK-Q3-JeC">
@@ -1206,7 +1206,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="DAQ-Fv-gOb">
-                        <rect key="frame" x="212" y="364" width="352" height="14"/>
+                        <rect key="frame" x="212" y="389" width="352" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(ограничение запроса поиска/рекомендаций, от 1 до 300)" id="8KR-AB-aRz">
@@ -1216,7 +1216,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" id="l90-KB-T70">
-                        <rect key="frame" x="160" y="330" width="46" height="22"/>
+                        <rect key="frame" x="160" y="355" width="46" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="6000" drawsBackground="YES" id="UtD-RW-jac">
@@ -1229,7 +1229,7 @@ Gw
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="yat-xs-CPW">
-                        <rect key="frame" x="4" y="333" width="150" height="17"/>
+                        <rect key="frame" x="4" y="358" width="150" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Лимит по id:" id="hHB-hM-Smv">
@@ -1239,7 +1239,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wEe-yN-SKJ">
-                        <rect key="frame" x="212" y="334" width="315" height="14"/>
+                        <rect key="frame" x="212" y="359" width="315" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(ограничение запроса аудиозаписей по id, от 1 до 6000)" id="sT0-Ab-4nX">
@@ -1249,7 +1249,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" id="Qje-VU-DJW">
-                        <rect key="frame" x="320" y="273" width="66" height="17"/>
+                        <rect key="frame" x="320" y="298" width="66" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" alignment="left" title="320 Kbps" placeholderString="" id="nNv-dX-brO">
@@ -1259,7 +1259,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="gFr-VN-UTf">
-                        <rect key="frame" x="18" y="273" width="301" height="17"/>
+                        <rect key="frame" x="18" y="298" width="301" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Игнорировать результаты с битрейтом менее" id="rgf-kF-9zg">
@@ -1269,7 +1269,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="5DS-fE-gv7">
-                        <rect key="frame" x="212" y="304" width="275" height="14"/>
+                        <rect key="frame" x="212" y="329" width="275" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(максимум одновременных загрузок, от 1 до 50)" id="3mQ-OZ-fE8">
@@ -1291,10 +1291,10 @@ Gw
                         </connections>
                     </button>
                     <button id="eNF-8A-aTR">
-                        <rect key="frame" x="539" y="390" width="32" height="22"/>
+                        <rect key="frame" x="539" y="415" width="32" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
-                        <buttonCell key="cell" type="square" title="..." bezelStyle="shadowlessSquare" image="4B9E4BA2-B7BD-41B9-A01F-87E25BD5D645" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Prt-Uk-NRJ">
+                        <buttonCell key="cell" type="square" title="..." bezelStyle="shadowlessSquare" image="19ECF808-A5BA-422D-851A-659CC6F0BF6A" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Prt-Uk-NRJ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
@@ -1303,7 +1303,7 @@ Gw
                         </connections>
                     </button>
                     <button id="uEd-kJ-saf">
-                        <rect key="frame" x="158" y="192" width="273" height="18"/>
+                        <rect key="frame" x="158" y="217" width="273" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <buttonCell key="cell" type="check" title="Полный путь к файлам в списке загрузок" bezelStyle="regularSquare" state="on" inset="2" id="Fgh-H1-BbR">
@@ -1312,7 +1312,7 @@ Gw
                         </buttonCell>
                     </button>
                     <button id="kbd-VQ-iEx">
-                        <rect key="frame" x="158" y="217" width="368" height="18"/>
+                        <rect key="frame" x="158" y="242" width="368" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <buttonCell key="cell" type="check" title="Хранить историю загрузок после закрытия программы" bezelStyle="regularSquare" state="on" inset="2" id="hVU-Hk-y9V">
@@ -1321,7 +1321,7 @@ Gw
                         </buttonCell>
                     </button>
                     <button id="Rk5-nc-1w2">
-                        <rect key="frame" x="158" y="242" width="401" height="18"/>
+                        <rect key="frame" x="158" y="267" width="401" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <buttonCell key="cell" type="check" title="Загружать по двойному клику (выкл. - воспроизвести)" bezelStyle="regularSquare" state="on" inset="2" id="wN2-ev-OCu">
@@ -1330,7 +1330,7 @@ Gw
                         </buttonCell>
                     </button>
                     <button id="XLq-bU-v8L">
-                        <rect key="frame" x="158" y="167" width="357" height="18"/>
+                        <rect key="frame" x="158" y="192" width="357" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <buttonCell key="cell" type="check" title="Автопереключение треков во время воспроизведения" bezelStyle="regularSquare" state="on" inset="2" id="cb6-es-Fy8">
@@ -1339,7 +1339,7 @@ Gw
                         </buttonCell>
                     </button>
                     <button id="EZ2-Yz-dvP">
-                        <rect key="frame" x="158" y="142" width="356" height="18"/>
+                        <rect key="frame" x="158" y="167" width="356" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <buttonCell key="cell" type="check" title="Исправление опечаток в поисковой фразе (vk.com)" bezelStyle="regularSquare" state="on" inset="2" id="jPR-sX-s8Z">
@@ -1379,32 +1379,32 @@ Gw
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSUserGuest" id="KhE-OJ-p3W"/>
                     </imageView>
                     <customView id="WhU-vb-2rJ" customClass="ITSwitch">
-                        <rect key="frame" x="123" y="242" width="29" height="18"/>
+                        <rect key="frame" x="123" y="267" width="29" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                     </customView>
                     <customView id="3g6-G0-ZDl" customClass="ITSwitch">
-                        <rect key="frame" x="123" y="217" width="29" height="18"/>
+                        <rect key="frame" x="123" y="242" width="29" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                     </customView>
                     <customView id="mzZ-Vh-ReL" customClass="ITSwitch">
-                        <rect key="frame" x="123" y="192" width="29" height="18"/>
+                        <rect key="frame" x="123" y="217" width="29" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                     </customView>
                     <customView id="o7y-g7-pSl" customClass="ITSwitch">
-                        <rect key="frame" x="123" y="167" width="29" height="18"/>
+                        <rect key="frame" x="123" y="192" width="29" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                     </customView>
                     <customView id="Sw7-aU-e95" customClass="ITSwitch">
-                        <rect key="frame" x="123" y="142" width="29" height="18"/>
+                        <rect key="frame" x="123" y="167" width="29" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                     </customView>
                     <button id="k1P-tQ-4uC">
-                        <rect key="frame" x="158" y="92" width="356" height="18"/>
+                        <rect key="frame" x="158" y="117" width="356" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <buttonCell key="cell" type="check" title="Проверка обновлений VK320 при запуске программы" bezelStyle="regularSquare" state="on" inset="2" id="m39-XC-MtO">
@@ -1413,12 +1413,26 @@ Gw
                         </buttonCell>
                     </button>
                     <customView id="j0c-zU-ijF" customClass="ITSwitch">
+                        <rect key="frame" x="123" y="117" width="29" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
+                    </customView>
+                    <button id="gaU-s6-c0i">
+                        <rect key="frame" x="158" y="92" width="390" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
+                        <buttonCell key="cell" type="check" title="Глобальность клавиш контроля воспроизведения (F7, F8, F9)" bezelStyle="regularSquare" state="on" inset="2" id="5Ih-Od-vP2">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <customView id="wX4-dt-VOC" customClass="ITSwitch">
                         <rect key="frame" x="123" y="92" width="29" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                     </customView>
                     <button id="NBn-OT-RwN">
-                        <rect key="frame" x="158" y="117" width="356" height="18"/>
+                        <rect key="frame" x="158" y="142" width="356" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <buttonCell key="cell" type="check" title="Открывать мою музыку при запуске/авторизации" bezelStyle="regularSquare" state="on" inset="2" id="xHv-Ej-JAa">
@@ -1427,12 +1441,12 @@ Gw
                         </buttonCell>
                     </button>
                     <customView id="HY8-C4-g83" customClass="ITSwitch">
-                        <rect key="frame" x="123" y="117" width="29" height="18"/>
+                        <rect key="frame" x="123" y="142" width="29" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                     </customView>
                     <slider toolTip="от 0 до 320 Kbps" verticalHuggingPriority="750" id="8bo-r0-2eL">
-                        <rect key="frame" x="390" y="267" width="183" height="27"/>
+                        <rect key="frame" x="390" y="292" width="183" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <animations/>
                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="10" doubleValue="10" tickMarkPosition="below" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="8fC-g8-f3Z">
@@ -1456,6 +1470,7 @@ Gw
                 <outlet property="filterKbpsSlider" destination="8bo-r0-2eL" id="Hz7-Xt-Z6f"/>
                 <outlet property="fullPathCheckbox" destination="mzZ-Vh-ReL" id="3XP-Pk-o5z"/>
                 <outlet property="getMyMusicOnLogin" destination="HY8-C4-g83" id="dUW-AP-bJL"/>
+                <outlet property="globalHotKeys" destination="wX4-dt-VOC" id="nzc-Uy-1TH"/>
                 <outlet property="myMusicLimitField" destination="l90-KB-T70" id="wN8-Hz-rQk"/>
                 <outlet property="requestLimitField" destination="A9z-0d-aem" id="wxu-qG-xs4"/>
                 <outlet property="saveHistoryCheckbox" destination="3g6-G0-ZDl" id="Gcm-Uz-Rvj"/>
@@ -1471,7 +1486,7 @@ Gw
         </menuItem>
     </objects>
     <resources>
-        <image name="4B9E4BA2-B7BD-41B9-A01F-87E25BD5D645" width="1" height="1">
+        <image name="19ECF808-A5BA-422D-851A-659CC6F0BF6A" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

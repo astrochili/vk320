@@ -24,6 +24,7 @@
     [self.doubleClickCheckbox setTintColor:[NSColor pxColorWithHexValue:COLOR_BUTTON_BLUE]];
     [self.checkUpdatesCheckbox setTintColor:[NSColor pxColorWithHexValue:COLOR_BUTTON_BLUE]];
     [self.getMyMusicOnLogin setTintColor:[NSColor pxColorWithHexValue:COLOR_BUTTON_BLUE]];
+    [self.globalHotKeys setTintColor:[NSColor pxColorWithHexValue:COLOR_BUTTON_BLUE]];
 
     [[self.requestLimitField cell] setPlaceholderString:REQUEST_DEFAULT_LIMIT];
     [[self.myMusicLimitField cell] setPlaceholderString:MYMUSIC_DEFAULT_LIMIT];

@@ -28,6 +28,7 @@
                                  [NSNumber numberWithBool:YES], kCorrector,
                                  [NSNumber numberWithBool:YES], kCheckUpdates,
                                  [NSNumber numberWithBool:YES], kGetMyMusicOnLogin,
+                                 [NSNumber numberWithBool:YES], kGlobalHotKeys,
                                  [NSNumber numberWithBool:NO], kShuffle,
                                  [NSNumber numberWithBool:NO], kBroadcast,
                                  [NSNumber numberWithInt:VOLUME_DEFAULT_LEVEL], kVolumeLevel,
@@ -118,7 +119,7 @@
     [self.sheet.correctorCheckbox setOn:[userDefaults boolForKey:kCorrector]];
     [self.sheet.checkUpdatesCheckbox setOn:[userDefaults boolForKey:kCheckUpdates]];
     [self.sheet.getMyMusicOnLogin setOn:[userDefaults boolForKey:kGetMyMusicOnLogin]];
-    
+    [self.sheet.globalHotKeys setOn:[userDefaults boolForKey:kGlobalHotKeys]];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification {
@@ -176,14 +177,17 @@
     [self.sheet.myMusicLimitField display];
     [self.sheet.streamsLimitField display];
     
-    BOOL needReloadDownloadsPaths = NO;
-    BOOL needSortResultsWithFilter = NO;
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
     if ([userDefaults integerForKey:kUseFullPaths] != self.sheet.fullPathCheckbox.isEnabled) {
-        needReloadDownloadsPaths = YES;
+        [self.window updateAfterCloseSettings];
     }
     if ([userDefaults integerForKey:kFilterKbps] != self.sheet.filterKbpsField.integerValue) {
-        needSortResultsWithFilter = YES;
+        [self.window sortResults];
+        [self.window.resultsTableView reloadData];
+    }
+    if ([userDefaults integerForKey:kGlobalHotKeys] != self.sheet.globalHotKeys.isEnabled) {
+        [self turnGlobalHotKeysTo:self.sheet.globalHotKeys.isEnabled];
     }
     
     [userDefaults setObject:self.sheet.downloadsPathField.stringValue forKey:kDownloadPath];
@@ -198,15 +202,8 @@
     [userDefaults setBool:self.sheet.correctorCheckbox.isOn forKey:kCorrector];
     [userDefaults setBool:self.sheet.checkUpdatesCheckbox.isOn forKey:kCheckUpdates];
     [userDefaults setBool:self.sheet.getMyMusicOnLogin.isOn forKey:kGetMyMusicOnLogin];
+    [userDefaults setBool:self.sheet.globalHotKeys.isOn forKey:kGlobalHotKeys];
     [userDefaults synchronize];
-
-    if (needReloadDownloadsPaths) {
-        [self.window updateAfterCloseSettings];
-    }
-    if (needSortResultsWithFilter) {
-        [self.window sortResults];
-        [self.window.resultsTableView reloadData];
-    }
     
     [NSApp endSheet:self.sheet];
     [self.sheet close];
@@ -232,6 +229,27 @@
         return savedDirectory;
     else
         return [[NSFileManager defaultManager] URLForDirectory:NSDownloadsDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+}
+
+- (void)turnGlobalHotKeysTo:(bool)turnOn {
+    if (turnOn) {
+        MASShortcut *shortcutF7 = [MASShortcut shortcutWithKeyCode:kVK_F7 modifierFlags:0];
+        MASShortcut *shortcutF8 = [MASShortcut shortcutWithKeyCode:kVK_F8 modifierFlags:0];
+        MASShortcut *shortcutF9 = [MASShortcut shortcutWithKeyCode:kVK_F9 modifierFlags:0];
+        [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcutF7 withAction:^{
+            [self.window clickPlayerPrev:nil];
+        }];
+        [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcutF8 withAction:^{
+            [self.window clickPlayerPlayPause:nil];
+        }];
+        [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcutF9 withAction:^{
+            [self.window clickPlayerNext:nil];
+        }];
+    } else {
+        // Почему-то не работает...
+        [[MASShortcutMonitor sharedMonitor] unregisterAllShortcuts];
+        // В итоге отключить глобальные клавиши можно лишь после перезапуска
+    }
 }
 
 

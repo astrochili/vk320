@@ -20,6 +20,7 @@
 #define kDoubleClickDownload @"Download on Double Click / or Play"
 #define kAutoPlayNextTrack @"Auto Play Next Track"
 #define kGetMyMusicOnLogin @"Get My Music OnLogin"
+#define kGlobalHotKeys @"Global hot keys"
 #define kSortDescriptorColumn @"Sort Descriptor Column"
 #define kSortDescriptorAscending @"Sort Descriptor Ascending"
 #define kDownloadsHistory @"Downloads History"

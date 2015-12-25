@@ -22,4 +22,6 @@
 - (IBAction)activateSheet:(id)sender;
 - (IBAction)closeSheet:(id)sender;
 
+- (void)turnGlobalHotKeysTo:(bool)turnOn;
+
 @end

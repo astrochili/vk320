@@ -37,19 +37,9 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
 
 - (void)awakeFromNib {
     
-    MASShortcut *shortcutF7 = [MASShortcut shortcutWithKeyCode:kVK_F7 modifierFlags:0];
-    MASShortcut *shortcutF8 = [MASShortcut shortcutWithKeyCode:kVK_F8 modifierFlags:0];
-    MASShortcut *shortcutF9 = [MASShortcut shortcutWithKeyCode:kVK_F9 modifierFlags:0];
-    [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcutF7 withAction:^{
-        [self clickPlayerPrev:nil];
-    }];
-    [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcutF8 withAction:^{
-        [self clickPlayerPlayPause:nil];
-    }];
-    [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcutF9 withAction:^{
-        [self clickPlayerNext:nil];
-    }];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kGlobalHotKeys]) {
+        [AppDelegate turnGlobalHotKeysTo:true];
+    }
     
     if (!self.access_token) {
         //once initilization
@@ -570,7 +560,6 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
                     [self updateAudioItem:downloadItem.audioItem];                    
                     currentStreams ++;
                 }
-                
             }
         }
         
