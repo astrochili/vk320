@@ -1,5 +1,5 @@
 #VK320
-Website - http://vk320.ru<br>
+Website - http://vk320.ru
 App for search, listen and download music from VK social network.
-<br><br>
-For build you need set <strong>APP_ID</strong> argument (see more on http://vk.com/dev) in "Main/vkapi.plist.example". And remove .example extention, indeed.
+
+For build you need set **APP_ID** argument (see more on http://vk.com/dev) in "Main/vkapi.plist.example". And remove .example extention, indeed.
