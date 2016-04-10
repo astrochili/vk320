@@ -17,6 +17,8 @@ git push origin hugo
 hugo --config="prod.toml" --destination="../public/"
 
 # Add, commit and push website changes to root branch
-git --git-dir="../public/.git" add -A
-git --git-dir="../public/.git" commit -m "$msg"
-git --git-dir="../public/.git" push origin gh-pages
+cd ../public
+git add -A
+git commit -m "$msg"
+git push origin gh-pages
+cd ../hugo
