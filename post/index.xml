@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>VK320</title>
-    <link>http://romanchiller.github.io/vk320/</link>
-    <description>Recent content on VK320</description>
+    <title>Posts on VK320</title>
+    <link>http://romanchiller.github.io/vk320/post/</link>
+    <description>Recent content in Posts on VK320</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
     <copyright>&lt;a href=&#39;http://romanchiller.com&#39; target=&#39;_blank&#39;&gt;Roman Silin&lt;/a&gt;</copyright>
     <lastBuildDate>Fri, 08 Apr 2016 12:25:00 +0300</lastBuildDate>
-    <atom:link href="http://romanchiller.github.io/vk320/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://romanchiller.github.io/vk320/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Концепт редизайна</title>
@@ -73,22 +73,6 @@
 &lt;p&gt;Изначально VK320 был написан в рамках образовательной практики и знакомства с Objective-C. После завершения этого &amp;ldquo;знакомства&amp;rdquo; и выхода первых стабильных версий достаточно предсказуемо возникли проблемы с дальнейшей поддержкой и совершенствованием приложения.&lt;/p&gt;
 
 &lt;p&gt;Сейчас я решил поближе познакомиться с языком программирования Swift и в качестве практического проекта тут не может не выступить VK320, который давненько требует рефакторинга на корню и допила 100500 крутых функций, предложенных пользователями. На основе опыта разработки текущей версии VK320 и огромного TODO-листа можно сделать уже весьма продуманный и качественный продукт на Swift.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>О приложении</title>
-      <link>http://romanchiller.github.io/vk320/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://romanchiller.github.io/vk320/about/</guid>
-      <description>&lt;p&gt;Приложение для прослушивания и скачивания музыки из ВКонтакте на Mac с OS X 10.9-10.11.&lt;/p&gt;
-
-&lt;p&gt;Публичная версия 0.2.7 доступна на странице GitHub: &lt;a href=&#34;https://git.io/v8OLL&#34;&gt;git.io/v8OLL&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Новая версия с редизайном и вагоном функций сейчас в процессе разработки с нуля на Swift, вступайте в группу чтобы следить за прогрессом.&lt;/p&gt;
-
-&lt;p&gt;Позволяет найти аудиозапись в лучшем качестве 320Kbps, предварительно послушать и сохранить ее на компьютер. Идеально подойдет для тех, кому важно качество скачиваемой аудиозаписи, ну и конечно, для всех желающих послушать музыку без открытия браузера.&lt;/p&gt;
 </description>
     </item>
     

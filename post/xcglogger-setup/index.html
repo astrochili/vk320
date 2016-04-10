@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru-ru">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.15" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="http://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+<link rel="stylesheet" href="http://romanchiller.github.io/vk320/css/normalize.css">
+<link rel="stylesheet" href="http://romanchiller.github.io/vk320/css/skeleton.css">
+<link rel="stylesheet" href="http://romanchiller.github.io/vk320/css/custom.css">
+<link rel="alternate" href="http://romanchiller.github.io/vk320/index.xml" type="application/rss+xml" title="VK320">
+<title>Сначала настроим XCGLogger - VK320</title>
+</head>
+<body>
+
+<div class="container">
+
+	<header role="banner">
+		<div class="header-logo">
+			<a href="http://romanchiller.github.io/vk320/"><img src="http://romanchiller.github.io/vk320/images/logo.png" width="60" height="60"></a>
+		</div>
+		
+	</header>
+
+
+	<main role="main">
+		<article itemscope itemtype="http://schema.org/BlogPosting">
+			<h1 class="entry-title" itemprop="headline">Сначала настроим XCGLogger</h1>
+			<span class="entry-meta"><time itemprop="datePublished" datetime="2016-04-02">April 02, 2016</time></span>
+			<section itemprop="entry-text">
+				<p>На старте было решено определиться со списком фреймворков, которые так или иначе будут использованы в приложении. Был потрачен целый день на подборку и сравнение именно тех, которые мне подходят: исключительно Swift, поддержка OS X и подключение через CocoaPods. Все они перечислены в папке Pods на скриншоте, а кейсы их использования будут описаны по мере возникновения.</p>
+
+<p>XCGLogger (git.io/PpvIyg) - отличный фреймворк, предназначенный для гибкой системы ведения лога с возможностью настройки уровней, цветов, формата сообщений и вывода в файл. Обычно лог используется для текущего дебага, но не меньшую пользу он принесет при анализе баг-репортов от пользователей. В старой версии VK320 напрочь отсутствовало ведение лога даже со стандартным NSLog, теперь есть желание это исправить.</p>
+
+<p><img src="http://romanchiller.github.io/vk320/images/xcglogger-setup.jpg" alt="Код настроки XCGLogger" /></p>
+
+<p>Фактически, на скриншоте первый код новой версии VK320 на Swift, в котором происходит настройка логгера при старте приложения. Подобрал подходящую палитру цветов сообщений, вроде выглядит симпатично :)</p>
+
+<p>Если вдруг кому информация показалась банальной, в следующий раз компенсирую обзором архитектуры приложения, классов и их ответственности в VK320.</p>
+
+			</section>
+		</article>
+	</main>
+
+
+	<footer role="contentinfo">
+		<div class="hr"></div>
+		<div class="footer-link">
+			
+			
+			
+			
+		</div>
+		<div class="copyright">Copyright &copy; <a href='http://romanchiller.com' target='_blank'>Roman Silin</a></div>
+	</footer>
+
+</div>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
