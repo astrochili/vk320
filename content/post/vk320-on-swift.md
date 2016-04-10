@@ -1,6 +1,6 @@
 +++
 date = "2016-03-26T11:26:00+03:00"
-draft = true
+draft = false
 title = "VK320 на Swift"
 vk = "wall-74416592_228"
 +++

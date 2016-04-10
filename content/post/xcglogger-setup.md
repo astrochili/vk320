@@ -1,6 +1,6 @@
 +++
 date = "2016-04-02T12:08:00+03:00"
-draft = true
+draft = false
 title = "Сначала настроим XCGLogger"
 vk = "wall-74416592_232"
 +++
