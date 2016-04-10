@@ -14,7 +14,7 @@ git commit -m "$msg"
 git push origin hugo
 
 # Build the project
-hugo --config="prod.toml" -destination="../public/"
+hugo --config="prod.toml" --destination="../public/"
 
 # Add, commit and push website changes to root branch
 git --git-dir="../public/.git" add -A
