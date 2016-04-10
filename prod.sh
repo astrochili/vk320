@@ -13,6 +13,10 @@ git add -A
 git commit -m "$msg"
 git push origin hugo
 
+cd ../public
+git rm -rf .
+cd ../hugo
+
 # Build the project
 hugo --config="prod.toml" --destination="../public/"
 
