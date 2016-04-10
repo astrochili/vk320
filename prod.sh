@@ -2,27 +2,21 @@
 
 echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 
-# Clean output folder.
-rm -rf public
-
-# Build the project.
-hugo -t hugo-zen --config="prod.toml"
-
-# Add changes to git.
-git add -A
-
-# Commit changes.
+# Parse commit message
 msg="Rebuilding website at `date`"
 if [ $# -eq 1 ]
   then msg="$1"
 fi
-git commit -m "$msg"
 
-# Push root to hugo branch
+# Add, commit and push source changes to root branch
+git add -A
+git commit -m "$msg"
 git push origin hugo
 
-# Push public folder to gh-pages branch
-git subtree push --prefix=public https://github.com/romanchiller/vk320.git gh-pages
+# Build the project
+hugo --config="prod.toml" -destination="../public/"
 
-# Clean output folder again.
-rm -rf public
+# Add, commit and push website changes to root branch
+git --git-dir="../public/.git" add -A
+git --git-dir="../public/.git" commit -m "$msg"
+git --git-dir="../public/.git" push origin gh-pages
