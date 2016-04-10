@@ -3,7 +3,7 @@ languageCode = "ru-ru"
 title = "VK320"
 canonifyurls = true
 theme = "hugo-zen"
-copyright = "<a href="http://romanchiller.com" target="_blank">Roman Silin</a>"
+copyright = "<a href='http://romanchiller.com' target='_blank'>Roman Silin</a>"
 
 [params]
   logo = "/images/logo.png"
