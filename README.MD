@@ -1,1 +1,1 @@
-## VK320 Website sources for Hugo 
+## VK320 Website powered by Hugo 
