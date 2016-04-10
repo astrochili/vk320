@@ -8,7 +8,7 @@ if [ $# -eq 1 ]
   then msg="$1"
 fi
 
-# Add, commit and push source changes to root branch
+# Add, commit and push source changes to hugo branch
 git add -A
 git commit -m "$msg"
 git push origin hugo
@@ -20,7 +20,7 @@ cd ../hugo
 # Build the project
 hugo --config="prod.toml" --destination="../public/"
 
-# Add, commit and push website changes to root branch
+# Add, commit and push website changes to gh-pages branch
 cd ../public
 git add -A
 git commit -m "$msg"
