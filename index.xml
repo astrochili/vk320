@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title></title>
-    <link>/</link>
-    <description>Recent content on </description>
+    <title>VK320</title>
+    <link>http://romanchiller.github.io/vk320/</link>
+    <description>Recent content on VK320</description>
     <generator>Hugo -- gohugo.io</generator>
-    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <language>ru-ru</language>
+    <copyright>&lt;a href=&#39;http://romanchiller.com&#39; target=&#39;_blank&#39;&gt;Roman Silin&lt;/a&gt;</copyright>
+    <atom:link href="http://romanchiller.github.io/vk320/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>О приложении</title>
-      <link>/about/</link>
+      <link>http://romanchiller.github.io/vk320/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/about/</guid>
+      <guid>http://romanchiller.github.io/vk320/about/</guid>
       <description>&lt;p&gt;Приложение для прослушивания и скачивания музыки из ВКонтакте на Mac с OS X 10.9-10.11.&lt;/p&gt;
 
 &lt;p&gt;Публичная версия 0.2.7 доступна на странице GitHub: &lt;a href=&#34;https://git.io/v8OLL&#34;&gt;git.io/v8OLL&lt;/a&gt;&lt;/p&gt;
