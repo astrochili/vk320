@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VK320</title>
+    <link>http://romanchiller.github.io/vk320/</link>
+    <description>Recent content on VK320</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-ru</language>
+    <lastBuildDate>Sun, 10 Apr 2016 12:49:59 +0300</lastBuildDate>
+    <atom:link href="http://romanchiller.github.io/vk320/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Hello world!</title>
+      <link>http://romanchiller.github.io/vk320/post/helloworld/</link>
+      <pubDate>Sun, 10 Apr 2016 12:49:59 +0300</pubDate>
+      
+      <guid>http://romanchiller.github.io/vk320/post/helloworld/</guid>
+      <description>&lt;p&gt;Ha-ha-ha&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
