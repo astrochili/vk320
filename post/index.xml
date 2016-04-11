@@ -6,9 +6,21 @@
     <description>Recent content in Posts on VK320</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <copyright>&lt;a href=&#39;http://romanchiller.com&#39; target=&#39;_blank&#39;&gt;Roman Silin&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 08 Apr 2016 12:25:00 +0300</lastBuildDate>
+    <copyright>&lt;a href=&#39;http://romansilin.com&#39; target=&#39;_blank&#39;&gt;Roman Silin&lt;/a&gt;</copyright>
+    <lastBuildDate>Mon, 11 Apr 2016 14:52:00 +0300</lastBuildDate>
     <atom:link href="http://romanchiller.github.io/vk320/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Базовая верстка</title>
+      <link>http://romanchiller.github.io/vk320/post/first-navigation/</link>
+      <pubDate>Mon, 11 Apr 2016 14:52:00 +0300</pubDate>
+      
+      <guid>http://romanchiller.github.io/vk320/post/first-navigation/</guid>
+      <description>&lt;p&gt;Верстаю потихоньку с помощью &lt;a href=&#34;http://snapkit.io&#34;&gt;SnapKit&lt;/a&gt;. Цвета и иконки черновые. Авторизация и базовая навигация работает, время заняться запросами данных с ВК для вывода друзей, аудиозаписей.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://romanchiller.github.io/vk320/images/first-navigation.gif&#34; alt=&#34;Gif&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Концепт редизайна</title>
@@ -52,7 +64,7 @@
       <guid>http://romanchiller.github.io/vk320/post/xcglogger-setup/</guid>
       <description>&lt;p&gt;На старте было решено определиться со списком фреймворков, которые так или иначе будут использованы в приложении. Был потрачен целый день на подборку и сравнение именно тех, которые мне подходят: исключительно Swift, поддержка OS X и подключение через CocoaPods. Все они перечислены в папке Pods на скриншоте, а кейсы их использования будут описаны по мере возникновения.&lt;/p&gt;
 
-&lt;p&gt;XCGLogger (git.io/PpvIyg) - отличный фреймворк, предназначенный для гибкой системы ведения лога с возможностью настройки уровней, цветов, формата сообщений и вывода в файл. Обычно лог используется для текущего дебага, но не меньшую пользу он принесет при анализе баг-репортов от пользователей. В старой версии VK320 напрочь отсутствовало ведение лога даже со стандартным NSLog, теперь есть желание это исправить.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://git.io/PpvIyg&#34;&gt;XCGLogger&lt;/a&gt; - отличный фреймворк, предназначенный для гибкой системы ведения лога с возможностью настройки уровней, цветов, формата сообщений и вывода в файл. Обычно лог используется для текущего дебага, но не меньшую пользу он принесет при анализе баг-репортов от пользователей. В старой версии VK320 напрочь отсутствовало ведение лога даже со стандартным NSLog, теперь есть желание это исправить.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://romanchiller.github.io/vk320/images/xcglogger-setup.jpg&#34; alt=&#34;Код настроки XCGLogger&#34; /&gt;&lt;/p&gt;
 
