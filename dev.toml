@@ -2,7 +2,6 @@ baseurl = "127.0.0.1:1313/"
 languageCode = "ru-ru"
 title = "VK320"
 canonifyurls = false
-theme = "hugo-zen"
 copyright = "<a href='http://romansilin.com' target='_blank'>Roman Silin</a>"
 
 [params]

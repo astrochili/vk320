@@ -2,7 +2,6 @@ baseurl = "http://astrochili.github.io/vk320/"
 languageCode = "ru-ru"
 title = "VK320"
 canonifyurls = true
-theme = "hugo-zen"
 copyright = "<a href='http://romansilin.com' target='_blank'>Roman Silin</a>"
 
 [params]
