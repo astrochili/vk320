@@ -1628,9 +1628,29 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         [self setSearchProcess:NO];
         [self updatePlayerUI];
         
-        if (self.unsortedResults.count) {
-            NSString *text = [NSString stringWithFormat:@"%@ %lu",PROCESS_SEARCH_FIN_TEXT,(unsigned long)self.unsortedResults.count];
-            [self.alertView showAlert:text withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
+        int totalWhiteCount = [self audioItemsTotalCountFromJSON:responseObject];
+        
+        NSInteger limit = [self requestLimit];
+        if ([method isEqual: METHOD_AUDIOGET_URL]) {
+            limit = [self myMusicLimit];
+        }
+        
+        if (totalWhiteCount > 0) {
+            
+            self.hiddenByCopyright = 0;
+            if (totalWhiteCount >= limit && self.unsortedResults.count < limit) {
+                self.hiddenByCopyright = limit - self.unsortedResults.count;
+            } else if (totalWhiteCount < limit && self.unsortedResults.count < totalWhiteCount) {
+                self.hiddenByCopyright = totalWhiteCount - self.unsortedResults.count;
+            }
+            
+            if (self.hiddenByCopyright) {
+                NSString *text = [NSString stringWithFormat:@"%@ %lu",PROCESS_SEARCH_FIN_TEXT_COPYRIGHT,(unsigned long)self.hiddenByCopyright];
+                [self.alertView showAlert:text withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_YELLOW] autoHide:YES];
+            } else {
+                NSString *text = [NSString stringWithFormat:@"%@ %lu",PROCESS_SEARCH_FIN_TEXT,(unsigned long)self.unsortedResults.count];
+                [self.alertView showAlert:text withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
+            }
         } else {
             [self.alertView showAlert:PROCESS_SEARCH_EMPTY_TEXT withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_YELLOW] autoHide:YES];
         }
@@ -1705,6 +1725,17 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     
 }
 
+- (int)audioItemsTotalCountFromJSON:(NSDictionary *)JSONData {
+    
+    // Quick hack, not time to do it better.
+    
+    NSMutableDictionary *rootLevel = [JSONData copy];
+    NSDictionary *responseLevel = rootLevel[@"response"];
+    NSNumber *itemsCount = responseLevel[@"count"];
+    return [itemsCount intValue];
+    
+}
+
 - (NSArray *)audioItemsFromJSON:(NSDictionary *)JSONdata {
     
     NSMutableArray *arrayOfAudioItems = [[NSMutableArray alloc] init];
@@ -1717,7 +1748,9 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     
     NSDictionary *responseLevel = rootLevel[@"response"];
     
-    if (![responseLevel objectForKey:@"items"]) { return @[]; }
+    if (![responseLevel objectForKey:@"items"]) {
+        return @[];
+    }
     NSDictionary *itemsLevel = responseLevel[@"items"];
     
     for (NSDictionary *item in itemsLevel) {
@@ -1839,7 +1872,11 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         self.results = mutableResults;
         self.unsortedResults = mutableUnsortedResults;
         [self.filteredItems addObject:audioItem];
-        [self.alertView showAlert:[NSString stringWithFormat:@"%@ %lu (%@ %lu)",PROCESS_SEARCH_FIN_TEXT, (unsigned long)self.results.count, PROCESS_SEARCH_FIN_FILTER, (unsigned long)self.filteredItems.count] withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
+        NSString *text = [NSString stringWithFormat:@"%@ %lu (%@ %lu)",PROCESS_SEARCH_FIN_TEXT, (unsigned long)self.results.count, PROCESS_SEARCH_FIN_FILTER, (unsigned long)self.filteredItems.count];
+        if (self.hiddenByCopyright) {
+            text = [NSString stringWithFormat:@"%@ %lu (%@ %lu, %@ %lu)",PROCESS_SEARCH_FIN_TEXT, (unsigned long)self.results.count, PROCESS_SEARCH_FIN_FILTER, (unsigned long)self.filteredItems.count, PROCESS_SEARCH_FIN_FILTER_COPYRIGHT, self.hiddenByCopyright];
+        }
+        [self.alertView showAlert:text withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
         [self.resultsTableView reloadData];
         
         return;

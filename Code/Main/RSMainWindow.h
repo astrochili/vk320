@@ -42,6 +42,7 @@
 @property (nonatomic) BOOL shuffle;
 @property(strong, nonatomic) NSString *appId;
 @property (strong, nonatomic) NSDictionary *configuration;
+@property (nonatomic) long hiddenByCopyright;
 
 @property (weak) IBOutlet HoverButtonView *likeButton;
 @property (weak) IBOutlet HoverButtonView *playerPrevButton;
