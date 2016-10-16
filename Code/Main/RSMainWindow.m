@@ -1644,13 +1644,12 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
                 self.hiddenByCopyright = totalWhiteCount - self.unsortedResults.count;
             }
             
+            NSString *text = [NSString stringWithFormat:@"%@ %lu",PROCESS_SEARCH_FIN_TEXT,(unsigned long)self.unsortedResults.count];
             if (self.hiddenByCopyright) {
-                NSString *text = [NSString stringWithFormat:@"%@ %lu",PROCESS_SEARCH_FIN_TEXT_COPYRIGHT,(unsigned long)self.hiddenByCopyright];
-                [self.alertView showAlert:text withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_YELLOW] autoHide:YES];
-            } else {
-                NSString *text = [NSString stringWithFormat:@"%@ %lu",PROCESS_SEARCH_FIN_TEXT,(unsigned long)self.unsortedResults.count];
-                [self.alertView showAlert:text withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
+                text = [NSString stringWithFormat:@"%@ %lu (%@ %lu)", PROCESS_SEARCH_FIN_TEXT, (unsigned long)self.unsortedResults.count, PROCESS_SEARCH_FIN_TEXT_COPYRIGHT, (unsigned long)self.hiddenByCopyright];
             }
+            [self.alertView showAlert:text withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
+            
         } else {
             [self.alertView showAlert:PROCESS_SEARCH_EMPTY_TEXT withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_YELLOW] autoHide:YES];
         }
