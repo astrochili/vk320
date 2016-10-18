@@ -1,0 +1,363 @@
+
+/* Class = "NSTableColumn"; headerCell.title = "Размер"; ObjectID = "0Yw-31-Ucp"; */
+"0Yw-31-Ucp.headerCell.title" = "Размер";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Настройки"; ObjectID = "0bf-vr-16z"; */
+"0bf-vr-16z.ibShadowedToolTip" = "Настройки";
+
+/* Class = "NSTextFieldCell"; title = "Unai"; ObjectID = "1LY-oE-A09"; */
+"1LY-oE-A09.title" = "Unai";
+
+/* Class = "NSMenuItem"; title = "Проверить обновления"; ObjectID = "1UI-F9-ykA"; */
+"1UI-F9-ykA.title" = "Проверить обновления";
+
+/* Class = "NSMenuItem"; title = "VK320"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "VK320";
+
+/* Class = "NSTextFieldCell"; title = "(максимум одновременных загрузок, от 1 до 50)"; ObjectID = "3mQ-OZ-fE8"; */
+"3mQ-OZ-fE8.title" = "(максимум одновременных загрузок, от 1 до 50)";
+
+/* Class = "NSButtonCell"; title = "Сброс авторизации"; ObjectID = "3zW-gz-aog"; */
+"3zW-gz-aog.title" = "Сброс авторизации";
+
+/* Class = "NSMenuItem"; title = "Полноэкранный режим"; ObjectID = "4HG-Jc-yqn"; */
+"4HG-Jc-yqn.title" = "Полноэкранный режим";
+
+/* Class = "NSMenuItem"; title = "Выход из VK320"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Выход из VK320";
+
+/* Class = "NSButtonCell"; title = "Глобальность клавиш контроля воспроизведения (F7, F8, F9)"; ObjectID = "5Ih-Od-vP2"; */
+"5Ih-Od-vP2.title" = "Глобальность клавиш контроля воспроизведения (F7, F8, F9)";
+
+/* Class = "NSMenuItem"; title = "Рекомендации"; ObjectID = "5UA-uh-DBI"; */
+"5UA-uh-DBI.title" = "Рекомендации";
+
+/* Class = "NSTextFieldCell"; placeholderString = "5"; ObjectID = "5VF-4P-4Jy"; */
+"5VF-4P-4Jy.placeholderString" = "5";
+
+/* Class = "NSMenuItem"; title = "О программе VK320"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "О программе VK320";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Добавить текущую аудиозапись в ВК"; ObjectID = "7Q9-HT-S8h"; */
+"7Q9-HT-S8h.ibShadowedToolTip" = "Добавить текущую аудиозапись в ВК";
+
+/* Class = "NSTextFieldCell"; title = "(ограничение запроса поиска/рекомендаций, от 1 до 300)"; ObjectID = "8KR-AB-aRz"; */
+"8KR-AB-aRz.title" = "(ограничение запроса поиска/рекомендаций, от 1 до 300)";
+
+/* Class = "NSMenuItem"; title = "Убрать в Dock"; ObjectID = "8Va-jo-wLM"; */
+"8Va-jo-wLM.title" = "Убрать в Dock";
+
+/* Class = "NSSlider"; ibShadowedToolTip = "от 0 до 320 Kbps"; ObjectID = "8bo-r0-2eL"; */
+"8bo-r0-2eL.ibShadowedToolTip" = "от 0 до 320 Kbps";
+
+/* Class = "NSMenuItem"; title = "Вставить"; ObjectID = "8oP-Q1-fRs"; */
+"8oP-Q1-fRs.title" = "Вставить";
+
+/* Class = "NSButtonCell"; title = "Скрыть настройки"; ObjectID = "9Ty-TG-QHM"; */
+"9Ty-TG-QHM.title" = "Скрыть настройки";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSMenuItem"; title = "Моя музыка"; ObjectID = "AzG-M5-79p"; */
+"AzG-M5-79p.title" = "Моя музыка";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Bvm-8z-eXk"; */
+"Bvm-8z-eXk.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "Рекомендации"; ObjectID = "Ccu-VX-ZgQ"; */
+"Ccu-VX-ZgQ.title" = "Рекомендации";
+
+/* Class = "NSMenuItem"; title = "Изменить масштаб"; ObjectID = "Clz-ZH-lbg"; */
+"Clz-ZH-lbg.title" = "Изменить масштаб";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Запустить загрузку"; ObjectID = "E4e-V9-FK6"; */
+"E4e-V9-FK6.ibShadowedToolTip" = "Запустить загрузку";
+
+/* Class = "NSButtonCell"; title = "Полный путь к файлам в списке загрузок"; ObjectID = "Fgh-H1-BbR"; */
+"Fgh-H1-BbR.title" = "Полный путь к файлам в списке загрузок";
+
+/* Class = "NSTextFieldCell"; title = "%username%"; ObjectID = "Gxh-13-hfm"; */
+"Gxh-13-hfm.title" = "%username%";
+
+/* Class = "NSMenuItem"; title = "Загрузить выделенные аудиозаписи"; ObjectID = "H5G-OI-tsC"; */
+"H5G-OI-tsC.title" = "Загрузить выделенные аудиозаписи";
+
+/* Class = "NSMenuItem"; title = "Пауза / Воспроизведение"; ObjectID = "Jep-vD-41R"; */
+"Jep-vD-41R.title" = "Пауза / Воспроизведение";
+
+/* Class = "NSTextFieldCell"; placeholderString = "30"; ObjectID = "KT2-Q2-VrS"; */
+"KT2-Q2-VrS.placeholderString" = "30";
+
+/* Class = "NSTextFieldCell"; title = "/Users/romansilin/Downloads/Unai - I Like Your Style.mp3"; ObjectID = "KhJ-yf-0uT"; */
+"KhJ-yf-0uT.title" = "/Users/romansilin/Downloads/Unai - I Like Your Style.mp3";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "NrS-ij-Cng"; */
+"NrS-ij-Cng.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Папка для загрузок:"; ObjectID = "OZR-vC-fbn"; */
+"OZR-vC-fbn.title" = "Папка для загрузок:";
+
+/* Class = "NSTableColumn"; headerCell.title = "Файл"; ObjectID = "Oks-li-sWz"; */
+"Oks-li-sWz.headerCell.title" = "Файл";
+
+/* Class = "NSMenuItem"; title = "Запустить все"; ObjectID = "P58-j1-RLq"; */
+"P58-j1-RLq.title" = "Запустить все";
+
+/* Class = "NSMenuItem"; title = "Следующий трек"; ObjectID = "PDc-Yt-Q7q"; */
+"PDc-Yt-Q7q.title" = "Следующий трек";
+
+/* Class = "NSMenuItem"; title = "Отменить"; ObjectID = "PYt-bY-Z6M"; */
+"PYt-bY-Z6M.title" = "Отменить";
+
+/* Class = "NSButtonCell"; title = "..."; ObjectID = "Prt-Uk-NRJ"; */
+"Prt-Uk-NRJ.title" = "...";
+
+/* Class = "NSMenuItem"; title = "Остановить выбранные"; ObjectID = "QMV-Mm-Yvi"; */
+"QMV-Mm-Yvi.title" = "Остановить выбранные";
+
+/* Class = "NSWindow"; title = "VK320"; ObjectID = "QvC-M9-y7g"; */
+"QvC-M9-y7g.title" = "VK320";
+
+/* Class = "NSTableColumn"; headerCell.title = "Время"; ObjectID = "RRe-V6-6nz"; */
+"RRe-V6-6nz.headerCell.title" = "Время";
+
+/* Class = "NSTextFieldCell"; title = "-:--"; ObjectID = "RVj-2m-qET"; */
+"RVj-2m-qET.title" = "-:--";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Rsk-ID-Jwh"; */
+"Rsk-ID-Jwh.title" = "Text Cell";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Скачать текущую аудиозапись"; ObjectID = "STt-WH-qNA"; */
+"STt-WH-qNA.ibShadowedToolTip" = "Скачать текущую аудиозапись";
+
+/* Class = "NSTableColumn"; headerCell.title = "Название"; ObjectID = "TzE-YI-v6A"; */
+"TzE-YI-v6A.headerCell.title" = "Название";
+
+/* Class = "NSMenuItem"; title = "Очистить все"; ObjectID = "UYz-uZ-Diu"; */
+"UYz-uZ-Diu.title" = "Очистить все";
+
+/* Class = "NSTextFieldCell"; placeholderString = "6000"; ObjectID = "UtD-RW-jac"; */
+"UtD-RW-jac.placeholderString" = "6000";
+
+/* Class = "NSMenuItem"; title = "Вырезать"; ObjectID = "Uvq-GJ-Fbi"; */
+"Uvq-GJ-Fbi.title" = "Вырезать";
+
+/* Class = "NSMenuItem"; title = "Добавить в ВКонтакте"; ObjectID = "V0a-7x-ebe"; */
+"V0a-7x-ebe.title" = "Добавить в ВКонтакте";
+
+/* Class = "NSTextFieldCell"; placeholderString = "Что будем искать?"; ObjectID = "VfL-od-lr8"; */
+"VfL-od-lr8.placeholderString" = "Что будем искать?";
+
+/* Class = "NSMenu"; title = "Загрузки"; ObjectID = "Vhx-V7-G8J"; */
+"Vhx-V7-G8J.title" = "Загрузки";
+
+/* Class = "NSButtonCell"; title = "По ссылке"; ObjectID = "WNN-5L-90m"; */
+"WNN-5L-90m.title" = "По ссылке";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "WP7-va-zeM"; */
+"WP7-va-zeM.title" = "Text Cell";
+
+/* Class = "NSMenu"; title = "Окно"; ObjectID = "WVn-B0-wCu"; */
+"WVn-B0-wCu.title" = "Окно";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Wst-7A-Y24"; */
+"Wst-7A-Y24.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "Нравится VK320?"; ObjectID = "Xm7-nj-4lQ"; */
+"Xm7-nj-4lQ.title" = "Нравится VK320?";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Транслировать музыку в ВК"; ObjectID = "Xrp-ib-FrH"; */
+"Xrp-ib-FrH.ibShadowedToolTip" = "Транслировать музыку в ВК";
+
+/* Class = "NSMenuItem"; title = "Поблагодарить"; ObjectID = "XxU-6n-zdb"; */
+"XxU-6n-zdb.title" = "Поблагодарить";
+
+/* Class = "NSTableColumn"; headerCell.title = "Исполнитель"; ObjectID = "YCx-K3-tcb"; */
+"YCx-K3-tcb.headerCell.title" = "Исполнитель";
+
+/* Class = "NSTextFieldCell"; title = "320 Kbps"; ObjectID = "a4k-6x-ZZV"; */
+"a4k-6x-ZZV.title" = "320 Kbps";
+
+/* Class = "NSMenuItem"; title = "Окно"; ObjectID = "alp-vc-bwS"; */
+"alp-vc-bwS.title" = "Окно";
+
+/* Class = "NSTableColumn"; headerCell.title = "Загрузка"; ObjectID = "bft-Y6-3rT"; */
+"bft-Y6-3rT.headerCell.title" = "Загрузка";
+
+/* Class = "NSMenuItem"; title = "Скачать текущий трек"; ObjectID = "cax-x5-WAn"; */
+"cax-x5-WAn.title" = "Скачать текущий трек";
+
+/* Class = "NSButtonCell"; title = "Автопереключение треков во время воспроизведения"; ObjectID = "cb6-es-Fy8"; */
+"cb6-es-Fy8.title" = "Автопереключение треков во время воспроизведения";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "dyL-wi-bBx"; */
+"dyL-wi-bBx.title" = "Text Cell";
+
+/* Class = "NSMenuItem"; title = "Закрыть окно"; ObjectID = "e8A-hk-s0Y"; */
+"e8A-hk-s0Y.title" = "Закрыть окно";
+
+/* Class = "NSMenuItem"; title = "Правка"; ObjectID = "ef3-vz-uab"; */
+"ef3-vz-uab.title" = "Правка";
+
+/* Class = "NSMenu"; title = "Плеер"; ObjectID = "egU-Ql-kBO"; */
+"egU-Ql-kBO.title" = "Плеер";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Выбрать все"; ObjectID = "fVl-Yi-t0L"; */
+"fVl-Yi-t0L.ibShadowedToolTip" = "Выбрать все";
+
+/* Class = "NSTextFieldCell"; title = "Лимит поиска:"; ObjectID = "foE-dU-ofX"; */
+"foE-dU-ofX.title" = "Лимит поиска:";
+
+/* Class = "NSMenuItem"; title = "Плеер"; ObjectID = "ftg-nj-Vfm"; */
+"ftg-nj-Vfm.title" = "Плеер";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Случайный порядок воспроизведения"; ObjectID = "gTr-a3-YhE"; */
+"gTr-a3-YhE.ibShadowedToolTip" = "Случайный порядок воспроизведения";
+
+/* Class = "NSMenuItem"; title = "Выбрать все"; ObjectID = "gZC-12-MRX"; */
+"gZC-12-MRX.title" = "Выбрать все";
+
+/* Class = "NSTextFieldCell"; title = "6:43"; ObjectID = "gj6-0H-cTr"; */
+"gj6-0H-cTr.title" = "6:43";
+
+/* Class = "NSButtonCell"; title = "www.vk320.ru"; ObjectID = "gqB-Eq-HHV"; */
+"gqB-Eq-HHV.title" = "www.vk320.ru";
+
+/* Class = "NSTextFieldCell"; title = "Лимит по id:"; ObjectID = "hHB-hM-Smv"; */
+"hHB-hM-Smv.title" = "Лимит по id:";
+
+/* Class = "NSButtonCell"; title = "Хранить историю загрузок после закрытия программы"; ObjectID = "hVU-Hk-y9V"; */
+"hVU-Hk-y9V.title" = "Хранить историю загрузок после закрытия программы";
+
+/* Class = "NSMenuItem"; title = "Повторить"; ObjectID = "hfc-Eu-wP7"; */
+"hfc-Eu-wP7.title" = "Повторить";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Добавить в загрузки выделенный список"; ObjectID = "hyV-n4-YPB"; */
+"hyV-n4-YPB.ibShadowedToolTip" = "Добавить в загрузки выделенный список";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "iA2-hP-6av"; */
+"iA2-hP-6av.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "I Like Your Style"; ObjectID = "iKv-PR-Oh9"; */
+"iKv-PR-Oh9.title" = "I Like Your Style";
+
+/* Class = "NSTextFieldCell"; title = "320 Kbps"; ObjectID = "j16-2v-z9h"; */
+"j16-2v-z9h.title" = "320 Kbps";
+
+/* Class = "NSMenuItem"; title = "Остановить все"; ObjectID = "jBD-wd-m5S"; */
+"jBD-wd-m5S.title" = "Остановить все";
+
+/* Class = "NSButtonCell"; title = "Исправление опечаток в поисковой фразе (vk.com)"; ObjectID = "jPR-sX-s8Z"; */
+"jPR-sX-s8Z.title" = "Исправление опечаток в поисковой фразе (vk.com)";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "jd0-zA-GPo"; */
+"jd0-zA-GPo.title" = "Text Cell";
+
+/* Class = "NSMenuItem"; title = "По ссылке"; ObjectID = "jwp-GA-lR1"; */
+"jwp-GA-lR1.title" = "По ссылке";
+
+/* Class = "NSWindow"; title = "Настройки"; ObjectID = "k56-0Q-D7U"; */
+"k56-0Q-D7U.title" = "Настройки";
+
+/* Class = "NSButtonCell"; title = "Проверка обновлений VK320 при запуске программы"; ObjectID = "m39-XC-MtO"; */
+"m39-XC-MtO.title" = "Проверка обновлений VK320 при запуске программы";
+
+/* Class = "NSMenuItem"; title = "Скопировать"; ObjectID = "mBZ-PU-afB"; */
+"mBZ-PU-afB.title" = "Скопировать";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Отменить загрузку"; ObjectID = "mbg-ne-aRs"; */
+"mbg-ne-aRs.ibShadowedToolTip" = "Отменить загрузку";
+
+/* Class = "NSTextFieldCell"; title = "320 Kbps"; ObjectID = "nNv-dX-brO"; */
+"nNv-dX-brO.title" = "320 Kbps";
+
+/* Class = "NSMenuItem"; title = "Все окна - на передний план"; ObjectID = "nR5-Ab-3oz"; */
+"nR5-Ab-3oz.title" = "Все окна - на передний план";
+
+/* Class = "NSMenuItem"; title = "Очистить выбранные"; ObjectID = "oHf-oi-PBp"; */
+"oHf-oi-PBp.title" = "Очистить выбранные";
+
+/* Class = "NSMenuItem"; title = "Поиск"; ObjectID = "oIs-oV-uUh"; */
+"oIs-oV-uUh.title" = "Поиск";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "og6-CN-DBZ"; */
+"og6-CN-DBZ.title" = "Text Cell";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Скачать"; ObjectID = "pnt-Nz-SXc"; */
+"pnt-Nz-SXc.ibShadowedToolTip" = "Скачать";
+
+/* Class = "NSMenuItem"; title = "Запустить выбранные"; ObjectID = "qB3-ZB-vAH"; */
+"qB3-ZB-vAH.title" = "Запустить выбранные";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Поставить загрузку на паузу"; ObjectID = "qVK-c0-3Dv"; */
+"qVK-c0-3Dv.ibShadowedToolTip" = "Поставить загрузку на паузу";
+
+/* Class = "NSTextFieldCell"; title = "Игнорировать результаты с битрейтом менее"; ObjectID = "rgf-kF-9zg"; */
+"rgf-kF-9zg.title" = "Игнорировать результаты с битрейтом менее";
+
+/* Class = "NSTableColumn"; headerCell.title = "Битрейт"; ObjectID = "rsG-CA-KKo"; */
+"rsG-CA-KKo.headerCell.title" = "Битрейт";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "s4C-pj-be1"; */
+"s4C-pj-be1.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "(ограничение запроса аудиозаписей по id, от 1 до 6000)"; ObjectID = "sT0-Ab-4nX"; */
+"sT0-Ab-4nX.title" = "(ограничение запроса аудиозаписей по id, от 1 до 6000)";
+
+/* Class = "NSMenu"; title = "Правка"; ObjectID = "seV-cO-KRc"; */
+"seV-cO-KRc.title" = "Правка";
+
+/* Class = "NSMenu"; title = "VK320"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "VK320";
+
+/* Class = "NSMenuItem"; title = "Item"; ObjectID = "uuk-m9-PYJ"; */
+"uuk-m9-PYJ.title" = "Item";
+
+/* Class = "NSMenu"; title = "Поиск"; ObjectID = "vVy-od-qJH"; */
+"vVy-od-qJH.title" = "Поиск";
+
+/* Class = "NSTextFieldCell"; title = "6:43"; ObjectID = "vfO-On-t3H"; */
+"vfO-On-t3H.title" = "6:43";
+
+/* Class = "NSMenuItem"; title = "Предыдущий трек"; ObjectID = "vwV-RC-Sl0"; */
+"vwV-RC-Sl0.title" = "Предыдущий трек";
+
+/* Class = "NSMenuItem"; title = "Настройки"; ObjectID = "vzl-IN-x7P"; */
+"vzl-IN-x7P.title" = "Настройки";
+
+/* Class = "NSTextFieldCell"; title = "6.22/15.34 Mb"; ObjectID = "w7H-wi-utN"; */
+"w7H-wi-utN.title" = "6.22/15.34 Mb";
+
+/* Class = "NSTextFieldCell"; placeholderString = "Выберите путь к папке для сохранения загрузок"; ObjectID = "wGV-Kl-pn0"; */
+"wGV-Kl-pn0.placeholderString" = "Выберите путь к папке для сохранения загрузок";
+
+/* Class = "NSButtonCell"; title = "Загружать по двойному клику (выкл. - воспроизвести)"; ObjectID = "wN2-ev-OCu"; */
+"wN2-ev-OCu.title" = "Загружать по двойному клику (выкл. - воспроизвести)";
+
+/* Class = "NSTextFieldCell"; title = "-:--"; ObjectID = "wiu-VY-zBq"; */
+"wiu-VY-zBq.title" = "-:--";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Меню запросов"; ObjectID = "wsf-rE-zGu"; */
+"wsf-rE-zGu.ibShadowedToolTip" = "Меню запросов";
+
+/* Class = "NSButtonCell"; title = "Открывать мою музыку при запуске/авторизации"; ObjectID = "xHv-Ej-JAa"; */
+"xHv-Ej-JAa.title" = "Открывать мою музыку при запуске/авторизации";
+
+/* Class = "NSMenuItem"; title = "Загрузки"; ObjectID = "xea-bj-UeS"; */
+"xea-bj-UeS.title" = "Загрузки";
+
+/* Class = "NSTableColumn"; headerCell.title = "Битрейт"; ObjectID = "yIp-X0-bN8"; */
+"yIp-X0-bN8.headerCell.title" = "Битрейт";
+
+/* Class = "NSTextFieldCell"; title = "Лимит загрузок:"; ObjectID = "yLK-Q3-JeC"; */
+"yLK-Q3-JeC.title" = "Лимит загрузок:";
+
+/* Class = "NSButtonCell"; title = "Моя музыка"; ObjectID = "yvQ-AF-sRv"; */
+"yvQ-AF-sRv.title" = "Моя музыка";
+
+/* Class = "NSTableColumn"; headerCell.title = "Время"; ObjectID = "zH8-Qm-mjr"; */
+"zH8-Qm-mjr.headerCell.title" = "Время";
+
+/* Class = "NSTextFieldCell"; title = "15.3 Mb"; ObjectID = "zIm-5b-Y58"; */
+"zIm-5b-Y58.title" = "15.3 Mb";

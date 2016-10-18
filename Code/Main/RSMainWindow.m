@@ -156,25 +156,25 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
             {
                 if ([lastVersion compare:currentVersion options:NSNumericSearch] == NSOrderedDescending) {
                     NSAlert *alert = [[NSAlert alloc] init];
-                    [alert setMessageText:@"Обновление VK320!"];
-                    [alert setInformativeText:[NSString stringWithFormat:@"Новая версия %@ доступна для загрузки.\nОтключить уведомления можно в настройках.", lastVersion]];
-                    [alert addButtonWithTitle:@"Подробнее"];
-                    [alert addButtonWithTitle:@"Позже"];
+                    [alert setMessageText:NSLocalizedString(@"UPDATE_TITLE", nil)];
+                    [alert setInformativeText:[NSString stringWithFormat:NSLocalizedString(@"UPDATE_TEXT", nil), lastVersion]];
+                    [alert addButtonWithTitle:NSLocalizedString(@"Download", nil)];
+                    [alert addButtonWithTitle:NSLocalizedString(@"Later", nil)];
                     [alert beginSheetModalForWindow:self completionHandler:^(NSModalResponse returnCode) {
                         if (returnCode == 1000) [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString:UPDATES_URL]];
                     }];
                 } else if ([sender isKindOfClass:[NSMenuItem class]]) {
-                    NSString *alertMessage = [NSString stringWithFormat:@"Текущая версия %@. Актуальный релиз %@.", currentVersion, lastVersion];
+                    NSString *alertMessage = [NSString stringWithFormat:NSLocalizedString(@"VERSION_TEXT", nil), currentVersion, lastVersion];
                     [self.alertView showAlert:alertMessage withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
                 }
             } else {
-                [self.alertView showAlert:ALERT_CHECK_UPDATES_FAIL withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
+                [self.alertView showAlert:NSLocalizedString(@"ALERT_CHECK_UPDATES_FAIL", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
             }
         } else {
-            [self.alertView showAlert:ALERT_CHECK_UPDATES_FAIL withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
+            [self.alertView showAlert:NSLocalizedString(@"ALERT_CHECK_UPDATES_FAIL", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
         }
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.alertView showAlert:ALERT_CHECK_UPDATES_FAIL withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
+        [self.alertView showAlert:NSLocalizedString(@"ALERT_CHECK_UPDATES_FAIL", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
     }];
     
     [operation start];
@@ -352,13 +352,13 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     [self.searchField setStringValue:@""];
     
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"Получение аудиозаписей по ссылке"];
-    [alert setInformativeText:@"Поддерживаемые форматы:\n\nvk.com/xxxxx (пользователь или группа)\nvk.com/audiosxxxxx (аудиозаписи)\nvk.com/audiosxxxxx?album_id=xxxxx (альбом)\nvk.com/audiosxxxxxfriend=xxxxx (друзья)\nvk.com/wallxxxxx (стена)\nvk.com/wallxxxxx_xxxxx (пост)\n\nПросто скопируйте ссылку из браузера и вставьте в поле поиска вместо поискового запроса."];
-    [alert addButtonWithTitle:@"Спасибо, я все понял"];
+    [alert setMessageText:NSLocalizedString(@"Audios on link", nil)];
+    [alert setInformativeText:NSLocalizedString(@"SUPPORTED_FORMATS", nil)];
+    [alert addButtonWithTitle:NSLocalizedString(@"Thanks!", nil)];
     [alert beginSheetModalForWindow:self completionHandler:^(NSModalResponse returnCode) {
     
         [self makeFirstResponder:self.searchField];
-        [[self.searchField cell] setPlaceholderString:@"Просто вставьте ссылку сюда"];
+        [[self.searchField cell] setPlaceholderString:NSLocalizedString(@"Just paste the link here", nil)];
         
     }];
     
@@ -1119,20 +1119,20 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
             
             if (![self checkResponseForError:responseObject]) {
                 
-                [self.alertView showAlert:ALERT_ADDTOVK_SUCCESS withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
+                [self.alertView showAlert:NSLocalizedString(@"ALERT_ADDTOVK_SUCCESS", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
                 
             } else {
                 
                 [audioitemForAdding setAddedToVK:NO];
                 [self updatePlayerUI];
-                [self.alertView showAlert:ALERT_ADDTOVK_FAILURE withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
+                [self.alertView showAlert:NSLocalizedString(@"ALERT_ADDTOVK_FAILURE", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
             }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
             [audioitemForAdding setAddedToVK:NO];
             [self updatePlayerUI];
-            [self.alertView showAlert:ALERT_ADDTOVK_FAILURE withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
+            [self.alertView showAlert:NSLocalizedString(@"ALERT_ADDTOVK_FAILURE", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
             
         }];
         
@@ -1141,7 +1141,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         
     } else {
         
-        [self.alertView showAlert:ALERT_ADDTOVK_FAILURE withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_YELLOW] autoHide:YES];
+        [self.alertView showAlert:NSLocalizedString(@"ALERT_ADDTOVK_FAILURE", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_YELLOW] autoHide:YES];
         
     }
     
@@ -1194,7 +1194,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         [self.playerNextButton setEnabled:NO];
         [self.playerPrevButton setEnabled:NO];
         [self.playerTrackSlider setEnabled:NO];
-        [self.trackTitle setText:@"Добро пожаловать в VK320!"];
+        [self.trackTitle setText:NSLocalizedString(@"Welcome to VK320!", nil)];
         [self.playerTime1 setStringValue:@"-:--"];
         [self.playerTime2 setStringValue:@"-:--"];
         [self.playerAddToVKButton setEnabled:NO];
@@ -1226,7 +1226,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://oauth.vk.com/authorize?client_id=%@&scope=%@&redirect_uri=https://oauth.vk.com/blank.html&display=mobile&v=%@&response_type=token", self.appId, VK_SCOPE, VK_API_VERSION]];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-    [self.alertView showAlert:ALERT_CONNECTION_TRY_API withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:NO];
+    [self.alertView showAlert:NSLocalizedString(@"ALERT_CONNECTION_TRY_API", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:NO];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
     [operation setCompletionBlockWithSuccess: ^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -1246,7 +1246,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
 - (void)logout {
     
     // Let's say to user the very important message
-    [self.alertView showAlert:ALERT_LOGOUT withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:NO];
+    [self.alertView showAlert:NSLocalizedString(@"ALERT_LOGOUT", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:NO];
     
     // For logout we just cleans the cookies for vk.com
     NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -1306,7 +1306,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         
     } else {
         
-        self.username = UNKNOWN_USERNAME;
+        self.username = NSLocalizedString(@"UNKNOWN_USERNAME", nil);
         self.avatar_50 = nil;
         
     }
@@ -1348,7 +1348,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
             [self makeFirstResponder:self.searchField];
             
             [self hideWebView];
-            [self.alertView showAlert:ALERT_CONNECTION_ON withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
+            [self.alertView showAlert:NSLocalizedString(@"ALERT_CONNECTION_ON", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
             [self trackVisitor];
             [self updateUsernameAndAvatar];
             if ([[NSUserDefaults standardUserDefaults] boolForKey:kGetMyMusicOnLogin])
@@ -1364,18 +1364,18 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
                 
                 if ([[queryStringDictionary objectForKey:@"error"] isEqualToString:@"access_denied"]) {
                     
-                    [self.alertView showAlert:ALERT_CONNECTION_VK_DENIED withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:NO];
+                    [self.alertView showAlert:NSLocalizedString(@"ALERT_CONNECTION_VK_DENIED", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:NO];
                     
                 } else {
                     
-                    NSString *text = [NSString stringWithFormat:@"%@: %@, %@",ALERT_CONNECTION_VK_ERROR,[queryStringDictionary objectForKey:@"error"],[queryStringDictionary objectForKey:@"error_description"]];
+                    NSString *text = [NSString stringWithFormat:@"%@: %@, %@", NSLocalizedString(@"ALERT_CONNECTION_VK_ERROR", nil), [queryStringDictionary objectForKey:@"error"], [queryStringDictionary objectForKey:@"error_description"]];
                     [self.alertView showAlert:text withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:NO];
                     
                 }
                 
             } else {
 
-                [self.alertView showAlert:ALERT_CONNECTION_VK_ERROR withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:NO];
+                [self.alertView showAlert:NSLocalizedString(@"ALERT_CONNECTION_VK_ERROR", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:NO];
             }
             
             [self hideWebView];
@@ -1441,7 +1441,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
 - (void)startSearchWithPhrase:(NSString *)searchPhrase {
     
     if (!self.isUserLoggedIn) {
-        [self.alertView showAlert:ALERT_CONNECTION_VK_LOGGEDOUT withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
+        [self.alertView showAlert:NSLocalizedString(@"ALERT_CONNECTION_VK_LOGGEDOUT", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
         NSLog(@"user is not logged in for search");
         return;
     }
@@ -1462,7 +1462,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         [self.searchField setStringValue:@""];
         [[self.searchField cell] setPlaceholderString:@""];
         method = METHOD_AUDIOGET_URL;
-        searchMessage = PROCESS_SEARCH_MESSAGE_MYMUSIC;
+        searchMessage = NSLocalizedString(@"PROCESS_SEARCH_MESSAGE_MYMUSIC", nil);
         parameters = @{@"owner_id": self.user_id,
                        @"offset": @"0",
                        @"count": [NSString stringWithFormat:@"%li",(long)[self myMusicLimit]],
@@ -1473,7 +1473,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         [self.searchField setStringValue:@""];
         [[self.searchField cell] setPlaceholderString:@""];
         method = METHOD_RECOMMEND_URL;
-        searchMessage = PROCESS_SEARCH_MESSAGE_RECOMMEND;
+        searchMessage = NSLocalizedString(@"PROCESS_SEARCH_MESSAGE_RECOMMEND", nil);
         parameters = @{@"shuffle": @"0",
                        @"offset": @"0",
                        @"count": [NSString stringWithFormat:@"%li",(long)[self requestLimit]],
@@ -1500,7 +1500,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
             }
             if ([wall_id rangeOfString:@"_"].location != NSNotFound) {
                 method = METHOD_POSTGET_URL;
-                searchMessage = PROCESS_SEARCH_MESSAGE_LINK;
+                searchMessage = NSLocalizedString(@"PROCESS_SEARCH_MESSAGE_LINK", nil);
                 parameters = @{@"posts": wall_id,
                                @"extended": @"1",
                                @"copy_history_depth": @"2",
@@ -1508,7 +1508,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
             
             } else {
                 method = METHOD_WALLGET_URL;
-                searchMessage = PROCESS_SEARCH_MESSAGE_LINK;
+                searchMessage = NSLocalizedString(@"PROCESS_SEARCH_MESSAGE_LINK", nil);
                 parameters = @{@"owner_id": wall_id,
                                @"offset": @"0",
                                @"count": @"100",
@@ -1534,7 +1534,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
             }
 
             method = METHOD_AUDIOGET_URL;
-            searchMessage = PROCESS_SEARCH_MESSAGE_LINK;
+            searchMessage = NSLocalizedString(@"PROCESS_SEARCH_MESSAGE_LINK", nil);
             parameters = @{@"owner_id": owner_id,
                            @"offset": @"0",
                            @"count": [NSString stringWithFormat:@"%li",(long)[self myMusicLimit]],
@@ -1566,7 +1566,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
                 
                 NSString *owner_id = [self vkIdFromJSON:responseObject];
                 NSString *method = METHOD_AUDIOGET_URL;
-                NSString *searchMessage = PROCESS_SEARCH_MESSAGE_LINK;
+                NSString *searchMessage = NSLocalizedString(@"PROCESS_SEARCH_MESSAGE_LINK", nil);
                 NSDictionary *parameters = @{@"owner_id": owner_id,
                                @"offset": @"0",
                                @"count": [NSString stringWithFormat:@"%li",(long)[self myMusicLimit]],
@@ -1590,7 +1590,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         // Поисковой запрос
         [self.searchField setStringValue:[searchPhrase clearBadUrlSymbols]];
         method = METHOD_SEARCH_URL;
-        searchMessage = PROCESS_SEARCH_MESSAGE_OTHER;
+        searchMessage = NSLocalizedString(@"PROCESS_SEARCH_MESSAGE_OTHER", nil);
         parameters = @{@"q": searchPhrase,
                        @"auto_complete": [NSString stringWithFormat:@"%li",(long)[[NSUserDefaults standardUserDefaults] integerForKey:kCorrector]],
                        @"lyrics": @"0",
@@ -1644,14 +1644,14 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
                 self.hiddenByCopyright = totalWhiteCount - self.unsortedResults.count;
             }
             
-            NSString *text = [NSString stringWithFormat:@"%@ %lu",PROCESS_SEARCH_FIN_TEXT,(unsigned long)self.unsortedResults.count];
+            NSString *text = [NSString stringWithFormat:@"%@ %lu", NSLocalizedString(@"Recieved:", nil), (unsigned long)self.unsortedResults.count];
             if (self.hiddenByCopyright) {
-                text = [NSString stringWithFormat:@"%@ %lu (%@ %lu)", PROCESS_SEARCH_FIN_TEXT, (unsigned long)self.unsortedResults.count, PROCESS_SEARCH_FIN_TEXT_COPYRIGHT, (unsigned long)self.hiddenByCopyright];
+                text = [NSString stringWithFormat:@"%@ %lu (%@ %lu)", NSLocalizedString(@"Recieved:", nil), (unsigned long)self.unsortedResults.count, NSLocalizedString(@"PROCESS_SEARCH_FIN_TEXT_COPYRIGHT", nil), (unsigned long)self.hiddenByCopyright];
             }
             [self.alertView showAlert:text withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
             
         } else {
-            [self.alertView showAlert:PROCESS_SEARCH_EMPTY_TEXT withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_YELLOW] autoHide:YES];
+            [self.alertView showAlert:NSLocalizedString(@"PROCESS_SEARCH_EMPTY_TEXT", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_YELLOW] autoHide:YES];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -1678,7 +1678,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     } else {
         
         [self makeFirstResponder:self.searchField];
-        [[self.searchField cell] setPlaceholderString:@"Что будем искать?"];
+        [[self.searchField cell] setPlaceholderString:NSLocalizedString(@"SEARCHFIELD_PLACEHOLDER", nil)];
         [self.searchProcessAnimatedIcon.layer removeAllAnimations];
     }
     
@@ -1871,9 +1871,9 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         self.results = mutableResults;
         self.unsortedResults = mutableUnsortedResults;
         [self.filteredItems addObject:audioItem];
-        NSString *text = [NSString stringWithFormat:@"%@ %lu (%@ %lu)",PROCESS_SEARCH_FIN_TEXT, (unsigned long)self.results.count, PROCESS_SEARCH_FIN_FILTER, (unsigned long)self.filteredItems.count];
+        NSString *text = [NSString stringWithFormat:@"%@ %lu (%@ %lu)", NSLocalizedString(@"PROCESS_SEARCH_FIN_TEXT", nil), (unsigned long)self.results.count, NSLocalizedString(@"PROCESS_SEARCH_FIN_FILTER", nil), (unsigned long)self.filteredItems.count];
         if (self.hiddenByCopyright) {
-            text = [NSString stringWithFormat:@"%@ %lu (%@ %lu, %@ %lu)",PROCESS_SEARCH_FIN_TEXT, (unsigned long)self.results.count, PROCESS_SEARCH_FIN_FILTER, (unsigned long)self.filteredItems.count, PROCESS_SEARCH_FIN_FILTER_COPYRIGHT, self.hiddenByCopyright];
+            text = [NSString stringWithFormat:@"%@ %lu (%@ %lu, %@ %lu)", NSLocalizedString(@"PROCESS_SEARCH_FIN_TEXT", nil), (unsigned long)self.results.count, NSLocalizedString(@"PROCESS_SEARCH_FIN_FILTER", nil), (unsigned long)self.filteredItems.count, NSLocalizedString(@"PROCESS_SEARCH_FIN_FILTER_COPYRIGHT", nil), self.hiddenByCopyright];
         }
         [self.alertView showAlert:text withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
         [self.resultsTableView reloadData];
@@ -1926,7 +1926,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         [self.networkManager POST:method_audioBroadcast parameters:addParameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             if ([self checkResponseForError:responseObject]) {
-                [self.alertView showAlert:(self.broadcast)? ALERT_BROADCAST_ON : ALERT_BROADCAST_OFF withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
+                [self.alertView showAlert:(self.broadcast)? NSLocalizedString(@"ALERT_BROADCAST_ON", nil) : NSLocalizedString(@"ALERT_BROADCAST_OFF", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE] autoHide:YES];
             }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -1947,7 +1947,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
     if ([rootLevel objectForKey:@"error"]) {
 
         error = YES;
-        [self.alertView showAlert:[NSString stringWithFormat:@"Ошибка API: %@ (vk.com/dev/errors)", [rootLevel objectForKey:@"error_code"]] withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
+        [self.alertView showAlert:[NSString stringWithFormat:NSLocalizedString(@"API Error", nil), [rootLevel objectForKey:@"error_code"]] withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
         NSLog(@"VK API Error Code: %@, description: %@", [rootLevel objectForKey:@"error_code"], [rootLevel objectForKey:@"error_msg"]);
         
     }
@@ -1962,9 +1962,9 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
 
         NSLog(@"###NETWORK_ERROR: %@", error.description);
         if (error.code == -1009) {
-            [self.alertView showAlert:ALERT_CONNECTION_OFF withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:NO];
+            [self.alertView showAlert:NSLocalizedString(@"ALERT_CONNECTION_OFF", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:NO];
         } else {
-            NSString *text = [NSString stringWithFormat:@"%@. Код: %li", ALERT_CONNECTION_OFF_UNKNOWN, error.code];
+            NSString *text = [NSString stringWithFormat:NSLocalizedString(@"API Error Code", nil), NSLocalizedString(@"ALERT_CONNECTION_OFF_UNKNOWN", nil), error.code];
                 [self.alertView showAlert:text withcolor:[NSColor redColor] autoHide:YES];
         }
         
@@ -2076,7 +2076,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
         } else {
             [downloadItem resetWithNoFile];
             [self updateDownloadsButtons];
-            [self.alertView showAlert:@"Файл не найден" withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_YELLOW] autoHide:YES];
+            [self.alertView showAlert:NSLocalizedString(@"File not found", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_YELLOW] autoHide:YES];
         }
         [[AppDelegate downloadsDirectory] stopAccessingSecurityScopedResource];
     }
@@ -2200,24 +2200,24 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
             
             RSDownloadCell *downloadCell = [tableView makeViewWithIdentifier:identifier owner:self];
             downloadCell.progress = (float)downloadItem.sizeDownloaded / (float)downloadItem.size;
-            NSString *progressString = @"В очереди";
+            NSString *progressString = NSLocalizedString(@"In queue", nil);
             [downloadCell setEmptyColor:[NSColor pxColorWithHexValue:COLOR_BAR_GRAY]];
             if (downloadItem.status == RSDownloadReady) {
-                progressString = [NSString stringWithFormat:@"В очереди"];
+                progressString = [NSString stringWithFormat:NSLocalizedString(@"In queue", nil)];
             } else if (downloadItem.status == RSDownloadAddedJustNow) {
-                progressString = @"Подключение...";
+                progressString = NSLocalizedString(@"Connecting...", nil);
             } else if (downloadItem.status == RSDownloadInProgress) {
                 [downloadCell setBarColor:[NSColor pxColorWithHexValue:COLOR_BAR_BLUE]];
-                progressString = [NSString stringWithFormat:@"%.2f Мб [%.0f%%]",(float)downloadItem.sizeDownloaded/1024/1024, downloadCell.progress*100];
+                progressString = [NSString stringWithFormat:NSLocalizedString(@"%.2f Mb [%.0f%%]", nil), (float)downloadItem.sizeDownloaded/1024/1024, downloadCell.progress*100];
             } else if (downloadItem.status == RSDownloadPause) {
                 [downloadCell setBarColor:[NSColor pxColorWithHexValue:COLOR_BAR_YELLOW]];
-                progressString = [NSString stringWithFormat:@"Пауза %.2f Мб [%.0f%%]", (float)downloadItem.sizeDownloaded/1024/1024, downloadCell.progress*100];
+                progressString = [NSString stringWithFormat:NSLocalizedString(@"Pause %.2f Mb [%.0f%%]", nil), (float)downloadItem.sizeDownloaded/1024/1024, downloadCell.progress*100];
             } else if (downloadItem.status == RSDownloadCompleted) {
                 [downloadCell setBarColor:[NSColor pxColorWithHexValue:COLOR_BAR_GREEN]];
-                progressString = [NSString stringWithFormat:@"%.2f Мб", (float)downloadItem.size/1024/1024];
+                progressString = [NSString stringWithFormat:NSLocalizedString(@"%.2f Mb", nil), (float)downloadItem.size/1024/1024];
             } else if (downloadItem.status == RSDownloadFileNotFound) {
                 [downloadCell setEmptyColor:[NSColor pxColorWithHexValue:COLOR_BAR_RED]];
-                progressString = @"Файл не найден";
+                progressString = NSLocalizedString(@"File not found", nil);
             }
 
             [downloadCell.textField setStringValue:progressString];
@@ -2248,7 +2248,7 @@ static NSString *PlayerItemContext = @"PlayerItemContext";
                 [cellView.textField setStringValue:[NSString stringWithFormat:@"%li kbps",downloadItem.kbps]];
             }
             if ([identifier isEqualToString:@"Size"]) {
-                [cellView.textField setStringValue:[NSString stringWithFormat:@"%.2f Mб",(float)downloadItem.size/1024/1024]];
+                [cellView.textField setStringValue:[NSString stringWithFormat:NSLocalizedString(@"%.2f Mb", nil),(float)downloadItem.size/1024/1024]];
             }
             return cellView;
             

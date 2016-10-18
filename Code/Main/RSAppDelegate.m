@@ -158,7 +158,7 @@
 
 - (IBAction)activateSheet:(id)sender {
 
-    NSString *username = (self.window.username)?self.window.username:UNKNOWN_USERNAME;
+    NSString *username = (self.window.username)?self.window.username:NSLocalizedString(@"UNKNOWN_USERNAME", nil);
     [self.sheet.currentUser setStringValue:username];
     NSImage *avatar = self.window.avatar_50;
     NSImage *emptyAvatart = [NSImage imageNamed:@"NSUserGuest"];

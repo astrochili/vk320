@@ -62,7 +62,7 @@
 
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context){
         [context setDuration:1.0];
-        [self setText:ALERT_CONNECTION_TRY];
+        [self setText:NSLocalizedString(@"ALERT_CONNECTION_TRY", nil)];
         [self setColor:[NSColor pxColorWithHexValue:COLOR_ALERT_BLUE]];
         [[self animator] setAlphaValue:1.0];
         [self setNeedsDisplay:YES];

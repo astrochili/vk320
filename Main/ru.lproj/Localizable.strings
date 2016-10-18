@@ -1,0 +1,66 @@
+/*
+  Localizable.strings
+  VK320
+
+  Created by Roman Silin on 16/10/2016.
+  Copyright © 2016 Roman Silin. All rights reserved.
+*/
+
+"Recieved:" = "Получено:";
+"SEARCHFIELD_PLACEHOLDER" = "Что будем искать?";
+
+"UPDATE_TITLE" = "Доступно обновление!";
+"UPDATE_TEXT" = "Новая версия %@ доступна для загрузки.\nОтключить уведомления можно в настройках.";
+"VERSION_TEXT" = "Текущая версия %@. Актуальный релиз %@.";
+"Download" = "Скачать";
+"Later" = "Позже";
+
+"Audios on link" = "Получение аудиозаписей по ссылке";
+"SUPPORTED_FORMATS" = "Поддерживаемые форматы:\n\nvk.com/xxxxx (пользователь или группа)\nvk.com/audiosxxxxx (аудиозаписи)\nvk.com/audiosxxxxx?album_id=xxxxx (альбом)\nvk.com/audiosxxxxxfriend=xxxxx (друзья)\nvk.com/wallxxxxx (стена)\nvk.com/wallxxxxx_xxxxx (пост)\n\nПросто скопируйте ссылку из браузера и вставьте в поле поиска вместо поискового запроса.";
+"Thanks!" = "Спасибо, я все понял";
+"Just paste the link here" = "Просто вставьте ссылку сюда";
+
+"Welcome to VK320!" = "Добро пожаловать в VK320!";
+
+"API Error" = "Ошибка API: %@ (vk.com/dev/errors)";
+"API Error Code" = "%@. Код: %li";
+
+"File not found" = "Файл не найден";
+"%.2f Mb" = "%.2f Мб";
+"In queue" = "В очереди";
+"Connecting..." = "Подключение...";
+"%.2f Mb [%.0f%%]" = "%.2f Мб [%.0f%%]";
+"Pause %.2f Mb [%.0f%%]" = "Пауза %.2f Мб [%.0f%%]";
+
+"ALERT_CONNECTION_OFF" = "Проверьте подключение к интернету";
+"ALERT_CONNECTION_OFF_UNKNOWN" = "Неизвестная ошибка подключения";
+"ALERT_CONNECTION_TRY_API" = "Авторизация через VK API...";
+"ALERT_CONNECTION_TRY" = "Соединение...";
+"ALERT_LOGOUT" = "Сброс авторизации...";
+"ALERT_CONNECTION_ON" = "Соединение установлено";
+"ALERT_CONNECTION_VK_DENIED" = "Ошибка авторизации: нет разрешения доступа к аудиозаписям";
+"ALERT_CONNECTION_VK_ERROR" = "Неизвестная ошибка авторизации";
+"ALERT_CONNECTION_VK_LOGGEDOUT" = "Ошибка: необходима авторизация";
+"ALERT_CONNECTION_SEARCH_ERROR" = "Ошибка поискового запроса";
+"ALERT_CONNECTION_FILESIZE_ERROR" = "Ошибка получения размера файла";
+"ALERT_VK_OFF" = "Не удалось подключиться к VK API";
+"ALERT_DOWNLOAD_ERROR" = "Ошибка загрузки аудиозаписи";
+"ALERT_CHECK_UPDATES_FAIL" = "Не удалось проверить обновления";
+"ALERT_CHECK_UPDATES_ACTUAL" = "Вы используете актуальную версию VK320";
+
+"ALERT_ADDTOVK_SUCCESS" = "Аудиозапись добавлена в ВК";
+"ALERT_ADDTOVK_FAILURE" = "Не удалось добавить аудиозапись в ВК";
+"ALERT_BROADCAST_ON" = "Трансляция музыки в статус включена";
+"ALERT_BROADCAST_OFF" = "Трансляция музыки в статус отключена";
+
+"PROCESS_SEARCH_MESSAGE_LINK" = "Запрос аудиозаписей по ссылке...";
+"PROCESS_SEARCH_MESSAGE_MYMUSIC" = "Запрос аудиозаписей профиля...";
+"PROCESS_SEARCH_MESSAGE_RECOMMEND" = "Запрос рекомендованных аудиозаписей...";
+"PROCESS_SEARCH_MESSAGE_OTHER" = "Запрос результатов поиска...";
+"PROCESS_SEARCH_FIN_TEXT" = "Получено:";
+"PROCESS_SEARCH_FIN_TEXT_COPYRIGHT" = "изъято:";
+"PROCESS_SEARCH_FIN_FILTER" = "отфильтровано:";
+"PROCESS_SEARCH_FIN_FILTER_COPYRIGHT" = "изъято:";
+"PROCESS_SEARCH_EMPTY_TEXT" = "Ничего не найдено!";
+"ALERT_DOWNLOADS_PATH" = "Не удается найти папку загрузок, проверьте настройки";
+"UNKNOWN_USERNAME" = "Не авторизирован";

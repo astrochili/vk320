@@ -41,7 +41,7 @@
     if ([self.delegate readyForStartDownload]) {
         
         if (![self.delegate internetAvailable]) {
-            [[self.delegate alertView] showAlert:ALERT_CONNECTION_OFF withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
+            [[self.delegate alertView] showAlert:NSLocalizedString(@"ALERT_CONNECTION_OFF", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
             self.status = RSDownloadReady;
             return;
         }
@@ -62,7 +62,7 @@
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
             if (error.code == -1005) {
-                [[self.delegate alertView] showAlert:ALERT_CONNECTION_OFF withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
+                [[self.delegate alertView] showAlert:NSLocalizedString(@"ALERT_CONNECTION_OFF", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
 
                 [self setStatus:RSDownloadReady];
                 [self setSizeDownloaded:0];
@@ -70,7 +70,7 @@
                 
             } else if (error.code == 2) {
                 
-                [self.delegate.alertView showAlert:ALERT_DOWNLOADS_PATH withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
+                [self.delegate.alertView showAlert:NSLocalizedString(@"ALERT_DOWNLOADS_PATH", nil) withcolor:[NSColor pxColorWithHexValue:COLOR_ALERT_RED] autoHide:YES];
                 [self setStatus:RSDownloadReady];
                 [self setSizeDownloaded:0];
                 [self.delegate updateDownloadItem:self];                

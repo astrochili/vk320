@@ -1,0 +1,66 @@
+/* 
+  Localizable.strings
+  VK320
+
+  Created by Roman Silin on 16/10/2016.
+  Copyright © 2016 Roman Silin. All rights reserved.
+*/
+
+"Recieved:" = "Recieved:";
+"SEARCHFIELD_PLACEHOLDER" = "What are you looking for?";
+
+"UPDATE_TITLE" = "Update available!";
+"UPDATE_TEXT" = "New version %@ available for download.\nYou can turn off this notification in settings.";
+"VERSION_TEXT" = "Current version %@. Actual version %@.";
+"Download" = "Download";
+"Later" = "Later";
+
+"Audios on link" = "Audios on link";
+"SUPPORTED_FORMATS" = "Supported formats:\n\nvk.com/xxxxx (user or group)\nvk.com/audiosxxxxx (audios)\nvk.com/audiosxxxxx?album_id=xxxxx (album)\nvk.com/audiosxxxxxfriend=xxxxx (friends)\nvk.com/wallxxxxx (wall)\nvk.com/wallxxxxx_xxxxx (post)\n\nJust copy a link from a browser and paste it to search field.";
+"Thanks!" = "Thanks!";
+"Just paste the link here" = "Just paste the link here";
+
+"Welcome to VK320!" = "Welcome to VK320!";
+
+"API Error" = "API Error: %@ (vk.com/dev/errors)";
+"API Error Code" = "%@. Code: %li";
+
+"File not found" = "File not found";
+"%.2f Mb" = "%.2f Mb";
+"In queue" = "In queue";
+"Connecting..." = "Connecting...";
+"%.2f Mb [%.0f%%]" = "%.2f Mb [%.0f%%]";
+"Pause %.2f Mb [%.0f%%]" = "Pause %.2f Мб [%.0f%%]";
+
+"ALERT_CONNECTION_OFF" = "Check your network connection";
+"ALERT_CONNECTION_OFF_UNKNOWN" = "Unknown network error";
+"ALERT_CONNECTION_TRY_API" = "Authoriazation...";
+"ALERT_CONNECTION_TRY" = "Connecting...";
+"ALERT_LOGOUT" = "Log out...";
+"ALERT_CONNECTION_ON" = "Connection is established";
+"ALERT_CONNECTION_VK_DENIED" = "Authorization error: No permission to access to audios";
+"ALERT_CONNECTION_VK_ERROR" = "Unknown authorization error";
+"ALERT_CONNECTION_VK_LOGGEDOUT" = "Error: authorization requared";
+"ALERT_CONNECTION_SEARCH_ERROR" = "Search request error";
+"ALERT_CONNECTION_FILESIZE_ERROR" = "File size receiving error";
+"ALERT_VK_OFF" = "Failed to connect to VK API";
+"ALERT_DOWNLOAD_ERROR" = "Downloading error";
+"ALERT_CHECK_UPDATES_FAIL" = "Failed to check for updates";
+"ALERT_CHECK_UPDATES_ACTUAL" = "You are using the latest version";
+
+"ALERT_ADDTOVK_SUCCESS" = "Song added to VK";
+"ALERT_ADDTOVK_FAILURE" = "Failed to adding song to VK";
+"ALERT_BROADCAST_ON" = "Broadcasting turned on";
+"ALERT_BROADCAST_OFF" = "Broadcasting turned off";
+
+"PROCESS_SEARCH_MESSAGE_LINK" = "Request for audios on link....";
+"PROCESS_SEARCH_MESSAGE_MYMUSIC" = "Request for your music...";
+"PROCESS_SEARCH_MESSAGE_RECOMMEND" = "Request for recommendations...";
+"PROCESS_SEARCH_MESSAGE_OTHER" = "Search request...";
+"PROCESS_SEARCH_FIN_TEXT" = "Recieved:";
+"PROCESS_SEARCH_FIN_TEXT_COPYRIGHT" = "copyright problems:";
+"PROCESS_SEARCH_FIN_FILTER" = "filtered:";
+"PROCESS_SEARCH_FIN_FILTER_COPYRIGHT" = "copyright problems:";
+"PROCESS_SEARCH_EMPTY_TEXT" = "Nothing found!";
+"ALERT_DOWNLOADS_PATH" = "Unable to find the downloads folder, check the settings.";
+"UNKNOWN_USERNAME" = "Not authorized";

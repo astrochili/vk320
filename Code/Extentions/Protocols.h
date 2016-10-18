@@ -49,8 +49,8 @@
 #define REQUEST_MAX_LIMIT @"300"
 #define MYMUSIC_MAX_LIMIT @"6000"
 #define STREAMS_MAX_LIMIT @"50"
-#define REQUEST_DEFAULT_LIMIT @"30"
-#define MYMUSIC_DEFAULT_LIMIT @"100"
+#define REQUEST_DEFAULT_LIMIT @"300"
+#define MYMUSIC_DEFAULT_LIMIT @"300"
 #define STREAMS_DEFAULT_LIMIT @"5"
 #define FILTER_KBPS_DEFAULT @"32"
 #define FILTER_KBPS_STEP 32
@@ -76,42 +76,6 @@
 #define COLOR_ALERT_BLUE @"0099DC"
 #define COLOR_ALERT_RED @"E83425"
 #define COLOR_ALERT_YELLOW @"FF9900"
-
-
-#define ALERT_CONNECTION_OFF @"Проверьте подключение к интернету"
-#define ALERT_CONNECTION_OFF_UNKNOWN @"Неизвестная ошибка подключения"
-#define ALERT_CONNECTION_TRY_API @"Авторизация через VK API..."
-#define ALERT_CONNECTION_TRY @"Соединение..."
-#define ALERT_LOGOUT @"Сброс авторизации..."
-#define ALERT_CONNECTION_ON @"Соединение установлено"
-#define ALERT_CONNECTION_VK_DENIED @"Ошибка авторизации: нет разрешения доступа к аудиозаписям"
-#define ALERT_CONNECTION_VK_ERROR @"Неизвестная ошибка авторизации"
-#define ALERT_CONNECTION_VK_LOGGEDOUT @"Ошибка: необходима авторизация"
-#define ALERT_CONNECTION_SEARCH_ERROR @"Ошибка поискового запроса"
-#define ALERT_CONNECTION_FILESIZE_ERROR @"Ошибка получения размера файла"
-#define ALERT_VK_OFF @"Не удалось подключиться к VK API"
-#define ALERT_DOWNLOAD_ERROR @"Ошибка загрузки аудиозаписи"
-#define ALERT_CHECK_UPDATES_FAIL @"Не удалось проверить обновления"
-#define ALERT_CHECK_UPDATES_ACTUAL @"Вы используете актуальную версию VK320"
-#define ALERT_CHECK_UPDATES_BETA @"Ваша версия VK320 новее общедоступной актуальной версии"
-
-#define ALERT_ADDTOVK_SUCCESS @"Аудиозапись добавлена в ВК"
-#define ALERT_ADDTOVK_FAILURE @"Не удалось добавить аудиозапись в ВК"
-#define ALERT_BROADCAST_ON @"Трансляция музыки в статус включена"
-#define ALERT_BROADCAST_OFF @"Трансляция музыки в статус отключена"
-
-#define PROCESS_SEARCH_MESSAGE_LINK @"Запрос аудиозаписей по ссылке..."
-#define PROCESS_SEARCH_MESSAGE_MYMUSIC @"Запрос аудиозаписей профиля..."
-#define PROCESS_SEARCH_MESSAGE_RECOMMEND @"Запрос рекомендованных аудиозаписей..."
-#define PROCESS_SEARCH_MESSAGE_OTHER @"Запрос результатов поиска..."
-#define PROCESS_SEARCH_FIN_TEXT @"Получено:"
-#define PROCESS_SEARCH_FIN_TEXT_COPYRIGHT @"изъято:"
-#define PROCESS_SEARCH_FIN_FILTER @"отфильтровано:"
-#define PROCESS_SEARCH_FIN_FILTER_COPYRIGHT @"изъято:"
-#define PROCESS_SEARCH_EMPTY_TEXT @"Ничего не найдено!"
-#define ALERT_DOWNLOADS_PATH @"Не удается найти папку загрузок, проверьте настройки"
-#define UNKNOWN_USERNAME @"Не авторизирован"
-
 
 typedef NS_ENUM(NSUInteger, RSDownloadStatus) {
     RSDownloadAddedJustNow = 0, // В очереди (из-за лимита или проблем с сетью)
