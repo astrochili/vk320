@@ -6,7 +6,7 @@
   Copyright © 2016 Roman Silin. All rights reserved.
 */
 
-"Recieved:" = "Получено:";
+"Received:" = "Получено:";
 "SEARCHFIELD_PLACEHOLDER" = "Что будем искать?";
 
 "UPDATE_TITLE" = "Доступно обновление!";
@@ -58,7 +58,7 @@
 "PROCESS_SEARCH_MESSAGE_RECOMMEND" = "Запрос рекомендованных аудиозаписей...";
 "PROCESS_SEARCH_MESSAGE_OTHER" = "Запрос результатов поиска...";
 "PROCESS_SEARCH_FIN_TEXT" = "Получено:";
-"PROCESS_SEARCH_FIN_TEXT_COPYRIGHT" = "изъято:";
+"PROCESS_SEARCH_FIN_TEXT_COPYRIGHT" = "изъято по просьбе правообладателя:";
 "PROCESS_SEARCH_FIN_FILTER" = "отфильтровано:";
 "PROCESS_SEARCH_FIN_FILTER_COPYRIGHT" = "изъято:";
 "PROCESS_SEARCH_EMPTY_TEXT" = "Ничего не найдено!";

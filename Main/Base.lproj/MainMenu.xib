@@ -937,7 +937,7 @@ CA
                             <button id="foh-H9-Zfz" customClass="HoverButtonView">
                                 <rect key="frame" x="-2" y="0.0" width="90" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" title="Open link" bezelStyle="regularSquare" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="WNN-5L-90m">
+                                <buttonCell key="cell" type="bevel" title="Open by link" bezelStyle="regularSquare" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="WNN-5L-90m">
                                     <behavior key="behavior" lightByContents="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
                                     <connections>
@@ -949,7 +949,7 @@ CA
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button id="eGs-Cx-Om7" customClass="HoverButtonView">
-                                <rect key="frame" x="83" y="0.0" width="90" height="18"/>
+                                <rect key="frame" x="79" y="0.0" width="98" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="bevel" title="My music" bezelStyle="regularSquare" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="yvQ-AF-sRv">
                                     <behavior key="behavior" lightByContents="YES"/>
@@ -965,7 +965,7 @@ CA
                             <button id="vL1-Ou-hwV" customClass="HoverButtonView">
                                 <rect key="frame" x="171" y="0.0" width="109" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" title="Suggested" bezelStyle="regularSquare" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="Ccu-VX-ZgQ">
+                                <buttonCell key="cell" type="bevel" title="Suggestions" bezelStyle="regularSquare" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="Ccu-VX-ZgQ">
                                     <behavior key="behavior" lightByContents="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
@@ -1163,9 +1163,9 @@ Gw
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wEe-yN-SKJ">
-                        <rect key="frame" x="212" y="359" width="272" height="14"/>
+                        <rect key="frame" x="212" y="359" width="300" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(limitation on audios request for id, from 1 to 6000)" id="sT0-Ab-4nX">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(limitation of audios in the request by id, from 1 to 6000)" id="sT0-Ab-4nX">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1192,7 +1192,7 @@ Gw
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="5DS-fE-gv7">
                         <rect key="frame" x="212" y="329" width="275" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(maximum simultaneous downloads, from 1 to 50)" id="3mQ-OZ-fE8">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(maximum of concurrent downloads, from 1 to 50)" id="3mQ-OZ-fE8">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1212,7 +1212,7 @@ Gw
                     <button id="eNF-8A-aTR">
                         <rect key="frame" x="539" y="415" width="32" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="..." bezelStyle="shadowlessSquare" image="B0C07894-15F4-4BE9-BBCC-0F649F83A5E3" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Prt-Uk-NRJ">
+                        <buttonCell key="cell" type="square" title="..." bezelStyle="shadowlessSquare" image="82BFBB2D-56A1-44FA-B9C4-6E3F3C2224E7" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Prt-Uk-NRJ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
@@ -1223,7 +1223,7 @@ Gw
                     <button id="uEd-kJ-saf">
                         <rect key="frame" x="158" y="217" width="273" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Full path to files in downloads list" bezelStyle="regularSquare" state="on" inset="2" id="Fgh-H1-BbR">
+                        <buttonCell key="cell" type="check" title="Full paths in downloads list" bezelStyle="regularSquare" state="on" inset="2" id="Fgh-H1-BbR">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -1247,7 +1247,7 @@ Gw
                     <button id="XLq-bU-v8L">
                         <rect key="frame" x="158" y="192" width="357" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Automatic playback of the next track" bezelStyle="regularSquare" state="on" inset="2" id="cb6-es-Fy8">
+                        <buttonCell key="cell" type="check" title="Automatically play next song" bezelStyle="regularSquare" state="on" inset="2" id="cb6-es-Fy8">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -1383,7 +1383,7 @@ Gw
         </menuItem>
     </objects>
     <resources>
-        <image name="B0C07894-15F4-4BE9-BBCC-0F649F83A5E3" width="1" height="1">
+        <image name="82BFBB2D-56A1-44FA-B9C4-6E3F3C2224E7" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
